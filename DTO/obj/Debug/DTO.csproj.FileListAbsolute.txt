@@ -1,0 +1,5 @@
+F:\study\WinForm\QLKS\DTO\bin\Debug\DTO.dll
+F:\study\WinForm\QLKS\DTO\bin\Debug\DTO.pdb
+F:\study\WinForm\QLKS\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+F:\study\WinForm\QLKS\DTO\obj\Debug\DTO.dll
+F:\study\WinForm\QLKS\DTO\obj\Debug\DTO.pdb
