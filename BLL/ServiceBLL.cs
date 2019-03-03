@@ -25,7 +25,7 @@ namespace BLL
 
             query = string.Format(query, col_1, col_2, col_3, col_4, col_5);
 
-            DataProvider.Instance.ExecuteQuery(query);
+            DataProvider.Instance.ExecuteNonQuery(query);
 
         }
 
@@ -35,7 +35,7 @@ namespace BLL
 
             query = string.Format(query, col_1, col_2, col_3, col_4, col_5);
 
-            DataProvider.Instance.ExecuteQuery(query);
+            DataProvider.Instance.ExecuteNonQuery(query);
         }
 
         public void DeleteService(string code_service)
@@ -44,7 +44,7 @@ namespace BLL
 
             query = string.Format(query, code_service);
 
-            DataProvider.Instance.ExecuteQuery(query);
+            DataProvider.Instance.ExecuteNonQuery(query);
         }
     }
 }

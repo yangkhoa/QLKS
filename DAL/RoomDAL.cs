@@ -42,5 +42,12 @@ namespace DAL
 
             return DataProvider.Instance.ExecuteQuery(query);
         }
+
+        public DataTable GetRoomListBooking()
+        {
+            string query = "SELECT a.code_room,a.name_room,c.name_type,c.price FROM Room a,RoomStatus b, RoomType c WHERE b.code_room_status = N'001' AND a.code_status = b.code_room_status AND a.code_type = c.code_room_type";
+
+            return DataProvider.Instance.ExecuteQuery(query);
+        }
     }
 }

@@ -33,10 +33,15 @@ namespace QLKS
             {
                 string col_1 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
                 string col_2 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
-            
-                ServiceCategoryBLL.Instance.EditServiceCategory(col_1, col_2);
+                try
+                {
+                    ServiceCategoryBLL.Instance.EditServiceCategory(col_1, col_2);
+                }
+                catch
+                {
+                    LoadServiceCategory();
+                }            
             }
-
             this.Close();
         }
 
@@ -51,15 +56,28 @@ namespace QLKS
                 string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
                 string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
 
-                ServiceCategoryBLL.Instance.InsertServiceCategory(col_1, col_2);
+                try
+                {
+                   ServiceCategoryBLL.Instance.InsertServiceCategory(col_1, col_2);
+                }
+                catch
+                {
+                    LoadServiceCategory();
+                }
             }
             else
             {
                 // Sửa trực tiếp trên form
                 string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
-
-                ServiceCategoryBLL.Instance.EditServiceCategory(col_1, col_2);
+                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";              
+                try
+                {
+                    ServiceCategoryBLL.Instance.EditServiceCategory(col_1, col_2);
+                }
+                catch
+                {
+                    LoadServiceCategory();
+                }
             }
         }
 
@@ -68,7 +86,6 @@ namespace QLKS
             if (MessageBox.Show("Bạn có muốn xóa dòng này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 string code_service_cateogry = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString();
-
                 try
                 {
                     ServiceCategoryBLL.Instance.DeleteServiceCategory(code_service_cateogry);
@@ -77,7 +94,9 @@ namespace QLKS
                 }
                 catch
                 {
-                    MessageBox.Show("Lỗi do có phát sinh dữ liệu");
+                    MessageBox.Show("Lỗi do có phát sinh dữ liệu","Thông báo",MessageBoxButtons.OK);
+
+                    LoadServiceCategory();
                 }
             }
         }

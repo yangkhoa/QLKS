@@ -30,6 +30,7 @@ namespace QLKS
         private void LoadRoomStatus()
         {
             string query = "SELECT * FROM RoomStatus";
+
             repositoryItemSearchLookUp_RoomStatus.DataSource = DataProvider.Instance.ExecuteQuery(query); // Data để chọn
 
             repositoryItemSearchLookUp_RoomStatus.ValueMember = "code_room_status"; // Giá trị để lookup
@@ -38,12 +39,6 @@ namespace QLKS
 
             // dòng này để gridcontrol trong GridlookupEdit tự động resize các column để không thừa không thiếu nội dung
             repositoryItemSearchLookUp_RoomStatus.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
-
-            // dòng này tự động mở popup khi search có kết quả
-            repositoryItemSearchLookUp_RoomStatus.ShowPopupShadow = true;
-
-            // Setup dòng này để có thể nhập vào gridlookup
-            repositoryItemSearchLookUp_RoomStatus.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
 
             gridColumn4.ColumnEdit = repositoryItemSearchLookUp_RoomStatus;
         }
@@ -59,12 +54,6 @@ namespace QLKS
 
             // dòng này để gridcontrol trong GridlookupEdit tự động resize các column để không thừa không thiếu nội dung
             repositoryItemSearchLookUp_RoomType.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
-
-            // dòng này tự động mở popup khi search có kết quả
-            repositoryItemSearchLookUp_RoomType.ShowPopupShadow = true;
-
-            // Setup dòng này để có thể nhập vào gridlookup
-            repositoryItemSearchLookUp_RoomType.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
 
             gridColumn3.ColumnEdit = repositoryItemSearchLookUp_RoomType;
         }

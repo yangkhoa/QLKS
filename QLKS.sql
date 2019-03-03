@@ -8,7 +8,7 @@ GO
 CREATE TABLE RoomStatus
 (
 	code_room_status NVARCHAR(20) PRIMARY KEY,
-	name_status NVARCHAR(100) -- 0: Trống || 1: Đang sử dụng || 2: Đã đặt
+	name_status NVARCHAR(100)
 )
 GO
 
@@ -41,7 +41,7 @@ GO
 CREATE TABLE EmployeePosition
 (
 	code_employee_position NVARCHAR(20) PRIMARY KEY,
-	name_position NVARCHAR(100) -- Admin || Nhân viên
+	name_position NVARCHAR(100)
 )
 GO
 
@@ -78,18 +78,29 @@ CREATE TABLE ServiceCategory
 )
 GO
 
+
+-- Customer
+CREATE TABLE Customer
+(
+	code_customer NVARCHAR(20) PRIMARY KEY,
+	name_customer NVARCHAR(100),
+	cmnd_customer NVARCHAR(100),
+	phone_customer NVARCHAR(20),
+	email_customer NVARCHAR(100)
+)
+Go	
+
 -- Service
 CREATE TABLE Service
 (
 	code_service NVARCHAR(20) PRIMARY KEY,
 	name_service NVARCHAR(100), 
-	unit INT DEFAULT 0,
+	unit NVARCHAR(20),
 	price_service float DEFAULT 0,
 	code_category NVARCHAR(20) NOT NULL,
-	
+
 	FOREIGN KEY (code_category) REFERENCES dbo.ServiceCategory(code_service_category)
 )
-ALTER TABLE Service DROP COLUMN unit;
 GO
 
 -- Bill
@@ -98,17 +109,18 @@ CREATE TABLE Bill
 	id_bill INT IDENTITY PRIMARY KEY,
 	code_employee NVARCHAR(20) NOT NULL,
 	code_room NVARCHAR(20) NOT NULL,
-	name_customer NVARCHAR(100), 
-	cmnd_customer NVARCHAR(100),
+	code_customer NVARCHAR(20) NOT NULL,
 	date_checkin DATETIME,
 	date_checkout DATETIME,
 	deposit FLOAT,
 	discount FLOAT DEFAULT 0,
-	status_bill INT NOT NULL DEFAULT 0, -- 1: Đã tt || 0: Chưa tt 
+	status_bill INT NOT NULL DEFAULT 0, 
 	date_created DATETIME DEFAULT GETDATE()
 
 	FOREIGN KEY (code_room) REFERENCES dbo.Room(code_room),
+	FOREIGN KEY (code_customer) REFERENCES dbo.Customer(code_customer),
 	FOREIGN KEY (code_employee) REFERENCES dbo.Employee(code_employee)
+	
 )
 GO
 
@@ -118,40 +130,28 @@ CREATE TABLE BillDetail
 	id_bill_detail INT IDENTITY PRIMARY KEY,
 	id_bill INT NOT NULL,
 	code_service NVARCHAR(20) NOT NULL,
-
+	quatity_service INT
 
 	FOREIGN KEY (id_bill) REFERENCES dbo.Bill(id_bill),
 	FOREIGN KEY (code_service) REFERENCES dbo.Service(code_service)
 )
 GO
-
-	
 -- BookingInfo
 CREATE TABLE BookingInfo
 (
 	id_booking INT IDENTITY PRIMARY KEY,
 	code_room NVARCHAR(20) NOT NULL,
-	name_customer NVARCHAR(100),
-	phone_cusomter NVARCHAR(100), 
+	code_customer NVARCHAR(20) NOT NULL,
 	date_book DATETIME,
 	date_checkin DATETIME,
 	date_checkout DATETIME,
-	deposit FLOAT,
+	deposit FLOAT
 
-
+	FOREIGN KEY (code_customer) REFERENCES dbo.Customer(code_customer),
 	FOREIGN KEY (code_room) REFERENCES dbo.Room(code_room)
 )
 GO
 
--- Customer
-CREATE TABLE Cusomter
-(
-	code_customer NVARCHAR(20) PRIMARY KEY,
-	name_customer NVARCHAR(100),
-	cmnd_customer NVARCHAR(100),
-	phone_customer NVARCHAR(100)
-)
-Go
 
 -- Thêm thông tin chức vụ nhân viên
 INSERT EmployeePosition(code_employee_position,name_position)
@@ -187,8 +187,6 @@ VALUES (N'VIP2',N'VIP 2 giường',5,1,400000)
 INSERT RoomType(code_room_type,name_type,number_max,number_min,price)
 VALUES (N'VIP3',N'VIP 3 giường',7,1,600000)
 
-
-
 -- Thêm thông tin trạng thái phòng
 INSERT RoomStatus(code_room_status,name_status)
 VALUES (N'001',N'Trống')
@@ -217,16 +215,25 @@ VALUES (N'002',N'Thức uống')
 INSERT ServiceCategory(code_service_category,name_category)
 VALUES (N'003',N'Phòng')
 
-
 --Thêm thông tin dịch vụ
 INSERT Service(code_service,name_service,unit,price_service,code_category)
-VALUES (N'AU001',N'Cà phê sáng',1,20000,N'002')
+VALUES (N'AU001',N'Cà phê sáng',N'LY',20000,N'002')
 INSERT Service(code_service,name_service,unit,price_service,code_category)
-VALUES (N'AU002',N'Nước suối',1,20000,N'002')
+VALUES (N'AU002',N'Nước suối',N'CHAI',20000,N'002')
 INSERT Service(code_service,name_service,unit,price_service,code_category)
-VALUES (N'AU003',N'Redbull',1,20000,N'002')
+VALUES (N'AU003',N'Redbull',N'LON',20000,N'002')
 INSERT Service(code_service,name_service,unit,price_service,code_category)
-VALUES (N'AU004',N'7UP',1,20000,N'002')
+VALUES (N'AU004',N'7UP',N'CHAI',20000,N'002')
+
+--Thêm thông tin khách hàng
+INSERT Customer(code_customer,name_customer,phone_customer,cmnd_customer,email_customer)
+VALUES (N'KHOA4442',N'Đăng Khoa',N'01266744442',N'0258789456',N'tenban18@gmail.com')
+INSERT Customer(code_customer,name_customer,phone_customer,cmnd_customer,email_customer)
+VALUES (N'SUSAN0715',N'Phan Tấn Trung',N'',N'0215454545',N'baroibeo@gmail.com')
+INSERT Customer(code_customer,name_customer,phone_customer,cmnd_customer,email_customer)
+VALUES (N'CUONG1112',N'Quốc Cường',N'01234561112',N'02588456625',N'cuonghihi@gmail.com')
+INSERT Customer(code_customer,name_customer,phone_customer,cmnd_customer,email_customer)
+VALUES (N'KHACHLE',N'',N'',N'',N'')
 
 
 
@@ -271,14 +278,3 @@ GO
 
 EXEC USP_UpdateAccount 
 
-
-
-SELECT * FROM RoomType
-DELETE FROM Room WHERE code_room = N'106'
-UPDATE Room SET name_room = N'Phòng 105', code_type = N'VIP3', code_status = N'003', note = N'sdf' WHERE code_room = N'105'
-
-SELECT * FROM Service
-
-UPDATE Service SET name_service=N'Cà phê', unit = 1, price_service = 25000, code_category = N'002' WHERE code_service = N'001'
-
-DELETE Service WHERE code_service = N'005'

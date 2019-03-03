@@ -72,8 +72,6 @@ namespace QLKS
             {
                 this.Close();
             }
-
-
             this.Close();
         }
 
@@ -109,8 +107,14 @@ namespace QLKS
                 string col_3 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
                 string col_4 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
                 string col_5 = treeView_Category.SelectedNode.Tag.ToString();
-
-                ServiceBLL.Instance.InsertService(col_1, col_2, col_3, col_4, col_5);
+                try
+                {
+                    ServiceBLL.Instance.InsertService(col_1, col_2, col_3, col_4, col_5);
+                }
+                catch
+                {
+                    LoadService();
+                }               
             }
             else
             {
@@ -120,8 +124,14 @@ namespace QLKS
                 string col_3 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
                 string col_4 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
                 string col_5 = treeView_Category.SelectedNode.Tag.ToString();
-
-                ServiceBLL.Instance.EditService(col_1, col_2, col_3, col_4, col_5);
+                try
+                {
+                    ServiceBLL.Instance.EditService(col_1, col_2, col_3, col_4, col_5);
+                }
+                catch
+                {
+                    LoadService();
+                }               
             }
         }
     }

@@ -86,7 +86,7 @@
             this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup4});
             this.ribbonPage4.Name = "ribbonPage4";
-            this.ribbonPage4.Text = "Báo cáo";
+            this.ribbonPage4.Text = "Tiện ích";
             // 
             // ribbonPageGroup4
             // 
@@ -94,11 +94,11 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.BarButton_ReportRevenue);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.ShowCaptionButton = false;
-            this.ribbonPageGroup4.Text = "Doanh thu";
+            this.ribbonPageGroup4.Text = "Báo cáo";
             // 
             // BarButton_ReportRevenue
             // 
-            this.BarButton_ReportRevenue.Caption = "Thống kê";
+            this.BarButton_ReportRevenue.Caption = "Doanh thu";
             this.BarButton_ReportRevenue.Id = 26;
             this.BarButton_ReportRevenue.ImageOptions.Image = global::QLKS.Properties.Resources.report_16x16;
             this.BarButton_ReportRevenue.ImageOptions.LargeImage = global::QLKS.Properties.Resources.report_32x32;
@@ -328,7 +328,7 @@
             this.Btn_Bill});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.ribbonControl1.MaxItemId = 31;
+            this.ribbonControl1.MaxItemId = 32;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -377,7 +377,6 @@
         private DevExpress.XtraBars.BarButtonItem BarButton_RoomStatus;
         private DevExpress.XtraBars.BarButtonItem BarButton_Service;
         private DevExpress.XtraBars.BarButtonItem BarButton_ServiceCategory;
-        private DevExpress.XtraBars.BarButtonItem BarButton_ReportRevenue;
         private DevExpress.XtraBars.BarButtonItem BarButton_Employee;
         private DevExpress.XtraBars.BarButtonItem Btn_Rent;
         private DevExpress.XtraBars.BarButtonItem Btn_Bill;
@@ -393,6 +392,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.BarButtonItem BarButton_ReportRevenue;
     }
 }
 

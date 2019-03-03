@@ -51,13 +51,7 @@ namespace QLKS
 
             // dòng này để gridcontrol trong GridlookupEdit tự động resize các column để không thừa không thiếu nội dung
             repositoryItemSearchChucVu.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
-            
-            // dòng này tự động mở popup khi search có kết quả
-            repositoryItemSearchChucVu.ShowPopupShadow = true;
-
-            // Setup dòng này để có thể nhập vào gridlookup
-            repositoryItemSearchChucVu.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-
+          
             gridColumn4.ColumnEdit = repositoryItemSearchChucVu;
         }
 

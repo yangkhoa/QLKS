@@ -106,6 +106,8 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn1.Caption = "Mã loại phòng";
             this.gridColumn1.FieldName = "code_room_type";
             this.gridColumn1.MinWidth = 22;
@@ -116,6 +118,8 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn2.Caption = "Tên loại phòng";
             this.gridColumn2.FieldName = "name_type";
             this.gridColumn2.MinWidth = 22;
@@ -126,6 +130,10 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn3.Caption = "Giá";
             this.gridColumn3.ColumnEdit = this.repositoryItemTextEdit3;
             this.gridColumn3.FieldName = "price";
@@ -144,6 +152,8 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn4.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn4.Caption = "Số người tối thiểu";
             this.gridColumn4.ColumnEdit = this.repositoryItemTextEdit1;
             this.gridColumn4.FieldName = "number_min";
@@ -162,6 +172,8 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn5.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn5.Caption = "Số người tối đa";
             this.gridColumn5.ColumnEdit = this.repositoryItemTextEdit2;
             this.gridColumn5.FieldName = "number_max";

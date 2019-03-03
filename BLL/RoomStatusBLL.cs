@@ -25,7 +25,7 @@ namespace BLL
 
             query = string.Format(query, col_1, col_2);
 
-            DataProvider.Instance.ExecuteQuery(query);
+            DataProvider.Instance.ExecuteNonQuery(query);
         }
 
         public void DeleteRoomType(string code_room_status)
@@ -34,7 +34,7 @@ namespace BLL
 
             query = string.Format(query, code_room_status);
 
-            DataProvider.Instance.ExecuteQuery(query);
+            DataProvider.Instance.ExecuteNonQuery(query);
         }
 
         public void InsertRoomType(string col_1, string col_2)
@@ -43,7 +43,7 @@ namespace BLL
 
             query = string.Format(query, col_1, col_2);
 
-            DataProvider.Instance.ExecuteQuery(query);
+            DataProvider.Instance.ExecuteNonQuery(query);
         }
     }
 }
