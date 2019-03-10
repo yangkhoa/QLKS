@@ -47,7 +47,6 @@
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.BarButton_Booking = new DevExpress.XtraBars.BarButtonItem();
-            this.Btn_Rent = new DevExpress.XtraBars.BarButtonItem();
             this.Btn_Bill = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.BarButton_Customer = new DevExpress.XtraBars.BarButtonItem();
@@ -68,10 +67,10 @@
             this.flowLayoutPanel_Room.AutoSize = true;
             this.flowLayoutPanel_Room.Controls.Add(this.ribbonStatusBar1);
             this.flowLayoutPanel_Room.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel_Room.Location = new System.Drawing.Point(0, 201);
+            this.flowLayoutPanel_Room.Location = new System.Drawing.Point(0, 211);
             this.flowLayoutPanel_Room.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel_Room.Name = "flowLayoutPanel_Room";
-            this.flowLayoutPanel_Room.Size = new System.Drawing.Size(1264, 408);
+            this.flowLayoutPanel_Room.Size = new System.Drawing.Size(1384, 453);
             this.flowLayoutPanel_Room.TabIndex = 3;
             // 
             // ribbonStatusBar1
@@ -202,7 +201,6 @@
             // 
             this.ribbonPageGroup2.AllowTextClipping = false;
             this.ribbonPageGroup2.ItemLinks.Add(this.BarButton_Booking);
-            this.ribbonPageGroup2.ItemLinks.Add(this.Btn_Rent);
             this.ribbonPageGroup2.ItemLinks.Add(this.Btn_Bill);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
@@ -215,14 +213,7 @@
             this.BarButton_Booking.ImageOptions.Image = global::QLKS.Properties.Resources.bocontact_16x16;
             this.BarButton_Booking.ImageOptions.LargeImage = global::QLKS.Properties.Resources.bocontact_32x32;
             this.BarButton_Booking.Name = "BarButton_Booking";
-            // 
-            // Btn_Rent
-            // 
-            this.Btn_Rent.Caption = "Thuê Phòng";
-            this.Btn_Rent.Id = 29;
-            this.Btn_Rent.ImageOptions.Image = global::QLKS.Properties.Resources.boposition2_16x16;
-            this.Btn_Rent.ImageOptions.LargeImage = global::QLKS.Properties.Resources.boposition2_32x32;
-            this.Btn_Rent.Name = "Btn_Rent";
+            this.BarButton_Booking.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButton_Booking_ItemClick);
             // 
             // Btn_Bill
             // 
@@ -246,6 +237,7 @@
             this.BarButton_Customer.Id = 11;
             this.BarButton_Customer.ImageOptions.LargeImage = global::QLKS.Properties.Resources.team_32x32;
             this.BarButton_Customer.Name = "BarButton_Customer";
+            this.BarButton_Customer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButton_Customer_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -324,10 +316,9 @@
             this.BarButton_ServiceCategory,
             this.BarButton_ReportRevenue,
             this.BarButton_Employee,
-            this.Btn_Rent,
             this.Btn_Bill});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.ribbonControl1.MaxItemId = 32;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -338,19 +329,19 @@
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowCategoryInCaption = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(1264, 201);
+            this.ribbonControl1.Size = new System.Drawing.Size(1384, 211);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // FMain
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 609);
+            this.ClientSize = new System.Drawing.Size(1384, 664);
             this.Controls.Add(this.flowLayoutPanel_Room);
             this.Controls.Add(this.ribbonControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "FMain";
             this.Ribbon = this.ribbonControl1;
             this.StatusBar = this.ribbonStatusBar1;
@@ -378,7 +369,6 @@
         private DevExpress.XtraBars.BarButtonItem BarButton_Service;
         private DevExpress.XtraBars.BarButtonItem BarButton_ServiceCategory;
         private DevExpress.XtraBars.BarButtonItem BarButton_Employee;
-        private DevExpress.XtraBars.BarButtonItem Btn_Rent;
         private DevExpress.XtraBars.BarButtonItem Btn_Bill;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;

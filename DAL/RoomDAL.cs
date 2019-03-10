@@ -49,5 +49,14 @@ namespace DAL
 
             return DataProvider.Instance.ExecuteQuery(query);
         }
+
+        public DataRow GetDetailRoom(string code_room)
+        {
+            string query = "SELECT a.code_room, c.name_type, c.price, a.note FROM Room a, RoomStatus b, RoomType c WHERE a.code_status = b.code_room_status AND a.code_type = c.code_room_type AND a.code_room = " + code_room + "";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            return data.Rows[0];
+        }
     }
 }

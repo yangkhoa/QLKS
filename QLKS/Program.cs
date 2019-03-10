@@ -20,9 +20,7 @@ namespace QLKS
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            Application.Run(new FInfoDetail());
-
-            
+            Application.Run(new FLogin()); 
         }
     }
 }

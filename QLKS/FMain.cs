@@ -38,7 +38,6 @@ namespace QLKS
         }
         private void LoadRoom()
         {
-            // Clear Panel trước khi sử dụng
             flowLayoutPanel_Room.Controls.Clear();
 
             List<Room> listroom = RoomDAL.Instance.LoadRoomList();
@@ -52,17 +51,19 @@ namespace QLKS
                 // Chỉnh hình trên chữ
                 btn.TextImageRelation = TextImageRelation.ImageAboveText;
 
+                // Tùy chỉnh
                 btn.TabStop = false;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.FlatAppearance.BorderSize = 0;
 
-                btn.Click += Btn_Click; 
+
+                btn.Click += Btn_Click;
+                btn.Tag = item;
+
                 switch (item.Code_status)
                 {
                     case ("Trống"):
-                        // Chỉnh màu cho button
                         btn.BackColor = Color.Aqua;
-                        // Thêm hình cho button
                         btn.Image = global::QLKS.Properties.Resources.home_32x32;
                         break;
                     case ("Đã được đặt"):
@@ -76,15 +77,15 @@ namespace QLKS
                     default:
                         break;
                 }
-
                 flowLayoutPanel_Room.Controls.Add(btn);
             }
-
         }
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Đang xây dựng ");
+            string code_room = ((sender as Button).Tag  as Room).Code_room;
+            FInfoDetail f = new FInfoDetail(LoginAccount, code_room);
+            f.ShowDialog();
         }
 
         private void BarButton_Employee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -107,9 +108,7 @@ namespace QLKS
         private void BarButton_Room_ItemClick(object sender, ItemClickEventArgs e)
         {
             FRoom f = new FRoom();
-
             f.ShowDialog();
-
             LoadRoom();
         }
 
@@ -137,5 +136,16 @@ namespace QLKS
             f.ShowDialog();
         }
 
+        private void BarButton_Customer_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FCustomer f = new FCustomer();
+            f.ShowDialog();
+        }
+
+        private void BarButton_Booking_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FBooking f = new FBooking();
+            f.ShowDialog();
+        }
     }
 }

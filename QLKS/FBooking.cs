@@ -62,10 +62,10 @@ namespace QLKS
 
         private void Btn_Add_Customer_Click(object sender, EventArgs e)
         {
-            FCustomer f = new FCustomer();
+            // Ở đây có thể tạo 1 form nhập thông tin khách hàng
 
-            // Nên làm 1 form tạo khách hàng không cần vô form khách hàng 
-            // Làm sau
+            FCustomer f = new FCustomer();
+            
             f.ShowDialog();
 
             LoadCBKH();

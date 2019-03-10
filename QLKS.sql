@@ -235,7 +235,34 @@ VALUES (N'CUONG1112',N'Quốc Cường',N'01234561112',N'02588456625',N'cuonghih
 INSERT Customer(code_customer,name_customer,phone_customer,cmnd_customer,email_customer)
 VALUES (N'KHACHLE',N'',N'',N'',N'')
 
+--Thêm hóa đơn
+INSERT Bill(code_employee,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
+VALUES (N'E001',N'101',N'SUSAN0715',GETDATE(),NULL,0,0,0,GETDATE())
+INSERT Bill(code_employee,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
+VALUES (N'E001',N'102',N'KHOA4442',GETDATE(),NULL,0,0,0,GETDATE())
+INSERT Bill(code_employee,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
+VALUES (N'E001',N'103',N'CUONG1112',GETDATE(),NULL,0,0,0,GETDATE())
 
+--Thêm chi tiết hóa đơn
+INSERT BillDetail(id_bill,code_service,quatity_service)
+VALUES (1,N'AU001',4)
+INSERT BillDetail(id_bill,code_service,quatity_service)
+VALUES (1,N'AU002',2)
+INSERT BillDetail(id_bill,code_service,quatity_service)
+VALUES (1,N'AU003',1)
+INSERT BillDetail(id_bill,code_service,quatity_service)
+VALUES (2,N'AU001',3)
+INSERT BillDetail(id_bill,code_service,quatity_service)
+VALUES (2,N'AU002',2)
+INSERT BillDetail(id_bill,code_service,quatity_service)
+VALUES (2,N'AU003',1)
+INSERT BillDetail(id_bill,code_service,quatity_service)
+VALUES (3,N'AU001',1)
+INSERT BillDetail(id_bill,code_service,quatity_service)
+VALUES (3,N'AU002',3)
+INSERT BillDetail(id_bill,code_service,quatity_service)
+VALUES (3,N'AU003',2)
+	
 
 -- Stored Procedure Đăng nhập
 CREATE PROC USP_Login
@@ -278,3 +305,14 @@ GO
 
 EXEC USP_UpdateAccount 
 
+
+SELECT id_bill FROM dbo.Bill WHERE code_room =N'101' AND status_bill = 0
+
+SELECT * FROM Bill WHERE id_bill = 1
+SELECT code_employee FROM Bill
+
+SELECT * FROM BillDetail
+
+SELECT a.code_room, c.name_type, c.price, a.note
+FROM Room a, RoomStatus b, RoomType c
+WHERE a.code_status = b.code_room_status AND a.code_type = c.code_room_type 

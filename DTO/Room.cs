@@ -28,7 +28,7 @@ namespace DTO
             this.Code_type = type;
             this.Name_room = name;
         }
-        //HÀM DỰNG TRẢ VỀ TỪNG ROW TRONG DATATABLE
+       
         public Room(DataRow row)
         {
             this.Code_room = row["code_room"].ToString();
