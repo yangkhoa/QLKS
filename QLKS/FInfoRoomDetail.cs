@@ -123,6 +123,8 @@ namespace QLKS
                     try
                     {
                         BillDetailBLL.Instance.InsertServiceUsing(id_bill, code_service, quatity);
+
+                        LoadInfoBill(id_bill);
                     }
                     catch
                     {
@@ -138,6 +140,8 @@ namespace QLKS
                     try
                     {
                         BillDetailBLL.Instance.EditServiceUsing(id_bill_detail, code_service, quatity);
+
+                        LoadInfoBill(id_bill);
                     }
                     catch
                     {
@@ -159,10 +163,7 @@ namespace QLKS
 
                         BillBLL.Instance.InsertBill(code_employee, txt_name_room.Text, search_customer.Text);
                     }
-                    catch
-                    {
-
-                    }
+                    catch{}
                 }
             }
 
@@ -199,6 +200,11 @@ namespace QLKS
                 txt_email_customer.Text = person.Email_customer;
             }
             catch { }
+        }
+
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+
         }
     }
 }

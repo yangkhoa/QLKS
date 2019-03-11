@@ -319,10 +319,19 @@ EXEC USP_InsertBill @code_employee = N'E001', @code_room = N'104', @code_custome
 
 
 
-SELECT * FROM Bill
+SELECT b.id_bill_detail , b.id_bill, b.code_service , b.quatity_service, c.price_service, b.quatity_service * c.price_service AS total
+FROM Bill a, BillDetail b, Service c
+WHERE a.id_bill = b.id_bill AND b.code_service = c.code_service AND b.id_bill = 1
 
+SELECT Sum(t.total) AS sum_total
+FROM (SELECT b.quatity_service * c.price_service AS total
+	FROM BillDetail b, Service c
+	WHERE b.code_service = c.code_service AND b.id_bill = 1) t
+
+
+
+SELECT * FROM Customer
 
 SELECT a.code_room, c.name_type, c.price, a.note
 FROM Room a, RoomStatus b, RoomType c
 WHERE a.code_status = b.code_room_status AND a.code_type = c.code_room_type 
-

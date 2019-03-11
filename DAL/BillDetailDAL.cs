@@ -36,7 +36,9 @@ namespace DAL
 
             DataRow row = DataProvider.Instance.ExecuteQuery(query).Rows[0];
 
-            return (double)row["sum_total"];
+            if (row.IsNull(0) == false)
+                return (double)row["sum_total"];
+            return 0;
 
         }
     }
