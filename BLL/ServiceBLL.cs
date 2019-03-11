@@ -26,7 +26,6 @@ namespace BLL
             query = string.Format(query, col_1, col_2, col_3, col_4, col_5);
 
             DataProvider.Instance.ExecuteNonQuery(query);
-
         }
 
         public void EditService(string col_1, string col_2, string col_3, string col_4, string col_5)

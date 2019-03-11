@@ -107,11 +107,11 @@
     <Compile Include="FEmployee.Designer.cs">
       <DependentUpon>FEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="FInfoDetail.cs">
+    <Compile Include="FInfoRoomDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FInfoDetail.Designer.cs">
-      <DependentUpon>FInfoDetail.cs</DependentUpon>
+    <Compile Include="FInfoRoomDetail.Designer.cs">
+      <DependentUpon>FInfoRoomDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="FLogin.cs">
       <SubType>Form</SubType>
@@ -169,8 +169,8 @@
     <EmbeddedResource Include="FCustomer.resx">
       <DependentUpon>FCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FInfoDetail.resx">
-      <DependentUpon>FInfoDetail.cs</DependentUpon>
+    <EmbeddedResource Include="FInfoRoomDetail.resx">
+      <DependentUpon>FInfoRoomDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>

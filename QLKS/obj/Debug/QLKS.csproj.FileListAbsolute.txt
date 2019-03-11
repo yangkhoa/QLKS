@@ -188,4 +188,4 @@ F:\study\WinForm\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
 F:\study\WinForm\QLKS\QLKS\obj\Debug\QLKS.csproj.CopyComplete
 F:\study\WinForm\QLKS\QLKS\obj\Debug\QLKS.exe
 F:\study\WinForm\QLKS\QLKS\obj\Debug\QLKS.pdb
-F:\study\Winform\QLKS\QLKS\obj\Debug\QLKS.FInfoDetail.resources
+F:\study\Winform\QLKS\QLKS\obj\Debug\QLKS.FInfoRoomDetail.resources

@@ -31,31 +31,29 @@ namespace QLKS
         {
             string query = "SELECT * FROM RoomStatus";
 
-            repositoryItemSearchLookUp_RoomStatus.DataSource = DataProvider.Instance.ExecuteQuery(query); // Data để chọn
+            repositoryItemSearchLookUp_RoomStatus.DataSource = DataProvider.Instance.ExecuteQuery(query);
 
-            repositoryItemSearchLookUp_RoomStatus.ValueMember = "code_room_status"; // Giá trị để lookup
+            repositoryItemSearchLookUp_RoomStatus.ValueMember = "code_room_status";
 
-            repositoryItemSearchLookUp_RoomStatus.DisplayMember = "name_status"; // Giá trị sẽ hiển thị
+            repositoryItemSearchLookUp_RoomStatus.DisplayMember = "name_status";
 
             // dòng này để gridcontrol trong GridlookupEdit tự động resize các column để không thừa không thiếu nội dung
             repositoryItemSearchLookUp_RoomStatus.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
 
-            gridColumn4.ColumnEdit = repositoryItemSearchLookUp_RoomStatus;
         }
 
         private void LoadRoomType()
         {
             string query = "SELECT * FROM RoomType";
-            repositoryItemSearchLookUp_RoomType.DataSource = DataProvider.Instance.ExecuteQuery(query); // Data để chọn
+            repositoryItemSearchLookUp_RoomType.DataSource = DataProvider.Instance.ExecuteQuery(query);
 
-            repositoryItemSearchLookUp_RoomType.ValueMember = "code_room_type"; // Giá trị để lookup
+            repositoryItemSearchLookUp_RoomType.ValueMember = "code_room_type";
 
-            repositoryItemSearchLookUp_RoomType.DisplayMember = "name_type"; // Giá trị sẽ hiển thị
+            repositoryItemSearchLookUp_RoomType.DisplayMember = "name_type";
 
             // dòng này để gridcontrol trong GridlookupEdit tự động resize các column để không thừa không thiếu nội dung
             repositoryItemSearchLookUp_RoomType.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
 
-            gridColumn3.ColumnEdit = repositoryItemSearchLookUp_RoomType;
         }
 
         private void LoadListRoom()

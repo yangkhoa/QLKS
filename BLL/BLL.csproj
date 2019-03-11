@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountBLL.cs" />
+    <Compile Include="BillBLL.cs" />
+    <Compile Include="BillDetailBLL.cs" />
     <Compile Include="BookingBLL.cs" />
     <Compile Include="CustomerBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

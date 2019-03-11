@@ -262,7 +262,6 @@ INSERT BillDetail(id_bill,code_service,quatity_service)
 VALUES (3,N'AU002',3)
 INSERT BillDetail(id_bill,code_service,quatity_service)
 VALUES (3,N'AU003',2)
-	
 
 -- Stored Procedure Đăng nhập
 CREATE PROC USP_Login
@@ -305,14 +304,25 @@ GO
 
 EXEC USP_UpdateAccount 
 
+-- Store Procedure để thêm Bill mới
+CREATE PROC USP_InsertBill
+@code_employee NVARCHAR(100), @code_room NVARCHAR(100), @code_customer NVARCHAR(100)
+AS
+BEGIN
+	INSERT Bill(code_employee,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
+	VALUES (@code_employee, @code_room, @code_customer,GETDATE(),NULL,0,0,0,GETDATE())
 
-SELECT id_bill FROM dbo.Bill WHERE code_room =N'101' AND status_bill = 0
+	UPDATE Room SET code_status = N'002' WHERE code_room = @code_room
+END
 
-SELECT * FROM Bill WHERE id_bill = 1
-SELECT code_employee FROM Bill
+EXEC USP_InsertBill @code_employee = N'E001', @code_room = N'104', @code_customer = N'CUONG1112'
 
-SELECT * FROM BillDetail
+
+
+SELECT * FROM Bill
+
 
 SELECT a.code_room, c.name_type, c.price, a.note
 FROM Room a, RoomStatus b, RoomType c
 WHERE a.code_status = b.code_room_status AND a.code_type = c.code_room_type 
+

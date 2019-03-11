@@ -21,11 +21,14 @@ namespace QLKS
         public FMain(Account acc)
         {
             this.LoginAccount = acc;
+
             InitializeComponent();
+
             Permisson(LoginAccount.Code_position);
+
             LoadRoom();
         }
-        void Permisson(string code_position)
+        void Permisson(string code_position) 
         {
             BarButton_Account.Enabled = code_position == "001";
             BarButton_Room.Enabled = code_position == "001";
@@ -84,8 +87,9 @@ namespace QLKS
         private void Btn_Click(object sender, EventArgs e)
         {
             string code_room = ((sender as Button).Tag  as Room).Code_room;
-            FInfoDetail f = new FInfoDetail(LoginAccount, code_room);
+            FInfoRoomDetail f = new FInfoRoomDetail(LoginAccount, code_room);
             f.ShowDialog();
+            LoadRoom();
         }
 
         private void BarButton_Employee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
