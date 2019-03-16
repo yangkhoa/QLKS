@@ -56,6 +56,8 @@
             this.BarButton_Logout = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.BarButton_Account = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.BarButton_Team = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.flowLayoutPanel_Room.SuspendLayout();
@@ -67,10 +69,10 @@
             this.flowLayoutPanel_Room.AutoSize = true;
             this.flowLayoutPanel_Room.Controls.Add(this.ribbonStatusBar1);
             this.flowLayoutPanel_Room.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel_Room.Location = new System.Drawing.Point(0, 211);
+            this.flowLayoutPanel_Room.Location = new System.Drawing.Point(0, 201);
             this.flowLayoutPanel_Room.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel_Room.Name = "flowLayoutPanel_Room";
-            this.flowLayoutPanel_Room.Size = new System.Drawing.Size(1384, 453);
+            this.flowLayoutPanel_Room.Size = new System.Drawing.Size(1258, 408);
             this.flowLayoutPanel_Room.TabIndex = 3;
             // 
             // ribbonStatusBar1
@@ -243,7 +245,8 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup6});
+            this.ribbonPageGroup6,
+            this.ribbonPageGroup9});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Hệ thống";
             // 
@@ -291,6 +294,22 @@
             this.BarButton_Account.Name = "BarButton_Account";
             this.BarButton_Account.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButton_Employee_ItemClick);
             // 
+            // ribbonPageGroup9
+            // 
+            this.ribbonPageGroup9.ItemLinks.Add(this.BarButton_Team);
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            this.ribbonPageGroup9.ShowCaptionButton = false;
+            this.ribbonPageGroup9.Text = "Thông tin";
+            // 
+            // BarButton_Team
+            // 
+            this.BarButton_Team.Caption = "Nhóm";
+            this.BarButton_Team.Id = 32;
+            this.BarButton_Team.ImageOptions.Image = global::QLKS.Properties.Resources.info_32x32;
+            this.BarButton_Team.ImageOptions.LargeImage = global::QLKS.Properties.Resources.info_32x32;
+            this.BarButton_Team.Name = "BarButton_Team";
+            this.BarButton_Team.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButton_Team_ItemClick);
+            // 
             // barButtonItem10
             // 
             this.barButtonItem10.Caption = "barButtonItem10";
@@ -316,10 +335,11 @@
             this.BarButton_ServiceCategory,
             this.BarButton_ReportRevenue,
             this.BarButton_Employee,
-            this.Btn_Bill});
+            this.Btn_Bill,
+            this.BarButton_Team});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.ribbonControl1.MaxItemId = 32;
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.ribbonControl1.MaxItemId = 33;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -329,19 +349,19 @@
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowCategoryInCaption = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(1384, 211);
+            this.ribbonControl1.Size = new System.Drawing.Size(1258, 201);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // FMain
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 664);
+            this.ClientSize = new System.Drawing.Size(1258, 609);
             this.Controls.Add(this.flowLayoutPanel_Room);
             this.Controls.Add(this.ribbonControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "FMain";
             this.Ribbon = this.ribbonControl1;
             this.StatusBar = this.ribbonStatusBar1;
@@ -383,6 +403,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem BarButton_ReportRevenue;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
+        private DevExpress.XtraBars.BarButtonItem BarButton_Team;
     }
 }
 

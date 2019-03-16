@@ -44,13 +44,15 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_quantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSpin_quatity = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.col_price = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_total = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.label1 = new System.Windows.Forms.Label();
             this.txt_sum_service_using = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -64,8 +66,8 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txt_discount = new DevExpress.XtraEditors.TextEdit();
+            this.txt_deposit = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -74,6 +76,7 @@
             this.emptySpaceItem11 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem12 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem9 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
@@ -114,8 +117,6 @@
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -123,6 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUp_Service)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpin_quatity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -132,8 +134,8 @@
             this.layoutControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_sum_service_using.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_discount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_deposit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
@@ -142,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -181,7 +184,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -210,7 +212,8 @@
             this.gridControl_BillDetail.MainView = this.gridView1;
             this.gridControl_BillDetail.Name = "gridControl_BillDetail";
             this.gridControl_BillDetail.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemSearchLookUp_Service});
+            this.repositoryItemSearchLookUp_Service,
+            this.repositoryItemSpin_quatity});
             this.gridControl_BillDetail.Size = new System.Drawing.Size(644, 698);
             this.gridControl_BillDetail.TabIndex = 0;
             this.gridControl_BillDetail.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -222,9 +225,9 @@
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn11,
-            this.gridColumn5});
+            this.col_quantity,
+            this.col_price,
+            this.col_total});
             this.gridView1.GridControl = this.gridControl_BillDetail;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
@@ -252,7 +255,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 202;
+            this.gridColumn3.Width = 192;
             // 
             // repositoryItemSearchLookUp_Service
             // 
@@ -319,44 +322,60 @@
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 4;
             // 
-            // gridColumn4
+            // col_quantity
             // 
-            this.gridColumn4.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn4.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn4.Caption = "Số lượng";
-            this.gridColumn4.FieldName = "quatity_service";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 1;
-            this.gridColumn4.Width = 85;
+            this.col_quantity.AppearanceCell.Options.UseTextOptions = true;
+            this.col_quantity.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.col_quantity.AppearanceHeader.Options.UseTextOptions = true;
+            this.col_quantity.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.col_quantity.Caption = "Số lượng";
+            this.col_quantity.ColumnEdit = this.repositoryItemSpin_quatity;
+            this.col_quantity.FieldName = "quatity_service";
+            this.col_quantity.Name = "col_quantity";
+            this.col_quantity.Visible = true;
+            this.col_quantity.VisibleIndex = 1;
+            this.col_quantity.Width = 86;
             // 
-            // gridColumn11
+            // repositoryItemSpin_quatity
             // 
-            this.gridColumn11.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn11.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn11.Caption = "Giá tiền";
-            this.gridColumn11.FieldName = "price_service";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 2;
-            this.gridColumn11.Width = 76;
+            this.repositoryItemSpin_quatity.AutoHeight = false;
+            this.repositoryItemSpin_quatity.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpin_quatity.Name = "repositoryItemSpin_quatity";
             // 
-            // gridColumn5
+            // col_price
             // 
-            this.gridColumn5.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn5.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn5.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn5.Caption = "Thành tiền";
-            this.gridColumn5.FieldName = "total";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 261;
+            this.col_price.AppearanceCell.Options.UseTextOptions = true;
+            this.col_price.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.col_price.AppearanceHeader.Options.UseTextOptions = true;
+            this.col_price.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.col_price.Caption = "Giá tiền";
+            this.col_price.DisplayFormat.FormatString = "#,#";
+            this.col_price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_price.FieldName = "price_service";
+            this.col_price.Name = "col_price";
+            this.col_price.OptionsColumn.AllowEdit = false;
+            this.col_price.OptionsColumn.AllowFocus = false;
+            this.col_price.Visible = true;
+            this.col_price.VisibleIndex = 2;
+            this.col_price.Width = 131;
+            // 
+            // col_total
+            // 
+            this.col_total.AppearanceCell.Options.UseTextOptions = true;
+            this.col_total.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.col_total.AppearanceHeader.Options.UseTextOptions = true;
+            this.col_total.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.col_total.Caption = "Thành tiền";
+            this.col_total.DisplayFormat.FormatString = "#,#";
+            this.col_total.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_total.FieldName = "total";
+            this.col_total.Name = "col_total";
+            this.col_total.OptionsColumn.AllowEdit = false;
+            this.col_total.OptionsColumn.AllowFocus = false;
+            this.col_total.Visible = true;
+            this.col_total.VisibleIndex = 3;
+            this.col_total.Width = 215;
             // 
             // panelControl1
             // 
@@ -391,8 +410,8 @@
             // 
             this.layoutControl3.Controls.Add(this.label1);
             this.layoutControl3.Controls.Add(this.txt_sum_service_using);
-            this.layoutControl3.Controls.Add(this.textEdit2);
-            this.layoutControl3.Controls.Add(this.textEdit1);
+            this.layoutControl3.Controls.Add(this.txt_discount);
+            this.layoutControl3.Controls.Add(this.txt_deposit);
             this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl3.Location = new System.Drawing.Point(2, 27);
             this.layoutControl3.Name = "layoutControl3";
@@ -402,12 +421,22 @@
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(517, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 28);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "VNĐ";
+            // 
             // txt_sum_service_using
             // 
+            this.txt_sum_service_using.EditValue = "0";
             this.txt_sum_service_using.Location = new System.Drawing.Point(169, 126);
             this.txt_sum_service_using.MenuManager = this.barManager1;
             this.txt_sum_service_using.Name = "txt_sum_service_using";
-            this.txt_sum_service_using.Properties.Mask.EditMask = "c0";
+            this.txt_sum_service_using.Properties.DisplayFormat.FormatString = "#,#";
+            this.txt_sum_service_using.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txt_sum_service_using.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_sum_service_using.Size = new System.Drawing.Size(344, 28);
             this.txt_sum_service_using.StyleController = this.layoutControl3;
@@ -468,6 +497,7 @@
             this.btn_Payment.Id = 0;
             this.btn_Payment.ImageOptions.Image = global::QLKS.Properties.Resources.currency_16x16;
             this.btn_Payment.Name = "btn_Payment";
+            this.btn_Payment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Payment_ItemClick);
             // 
             // btn_SwapRoom
             // 
@@ -475,6 +505,7 @@
             this.btn_SwapRoom.Id = 1;
             this.btn_SwapRoom.ImageOptions.Image = global::QLKS.Properties.Resources.convert_16x16;
             this.btn_SwapRoom.Name = "btn_SwapRoom";
+            this.btn_SwapRoom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_SwapRoom_ItemClick);
             // 
             // btn_DeleteServiceUsing
             // 
@@ -526,27 +557,31 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 702);
             // 
-            // textEdit2
+            // txt_discount
             // 
-            this.textEdit2.Location = new System.Drawing.Point(169, 69);
-            this.textEdit2.MenuManager = this.barManager1;
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.Mask.EditMask = "p";
-            this.textEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit2.Size = new System.Drawing.Size(138, 28);
-            this.textEdit2.StyleController = this.layoutControl3;
-            this.textEdit2.TabIndex = 5;
+            this.txt_discount.EditValue = "0";
+            this.txt_discount.Location = new System.Drawing.Point(169, 69);
+            this.txt_discount.MenuManager = this.barManager1;
+            this.txt_discount.Name = "txt_discount";
+            this.txt_discount.Properties.Mask.EditMask = "P";
+            this.txt_discount.Size = new System.Drawing.Size(138, 28);
+            this.txt_discount.StyleController = this.layoutControl3;
+            this.txt_discount.TabIndex = 5;
+            this.txt_discount.Leave += new System.EventHandler(this.txt_discount_Leave);
             // 
-            // textEdit1
+            // txt_deposit
             // 
-            this.textEdit1.Location = new System.Drawing.Point(169, 12);
-            this.textEdit1.MenuManager = this.barManager1;
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Mask.EditMask = "c0";
-            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit1.Size = new System.Drawing.Size(423, 28);
-            this.textEdit1.StyleController = this.layoutControl3;
-            this.textEdit1.TabIndex = 4;
+            this.txt_deposit.EditValue = "0";
+            this.txt_deposit.Location = new System.Drawing.Point(169, 12);
+            this.txt_deposit.MenuManager = this.barManager1;
+            this.txt_deposit.Name = "txt_deposit";
+            this.txt_deposit.Properties.DisplayFormat.FormatString = "#,#";
+            this.txt_deposit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txt_deposit.Properties.Mask.EditMask = "c0";
+            this.txt_deposit.Size = new System.Drawing.Size(423, 28);
+            this.txt_deposit.StyleController = this.layoutControl3;
+            this.txt_deposit.TabIndex = 4;
+            this.txt_deposit.Leave += new System.EventHandler(this.txt_deposit_Leave);
             // 
             // layoutControlGroup3
             // 
@@ -567,7 +602,7 @@
             // 
             // layoutControlItem10
             // 
-            this.layoutControlItem10.Control = this.textEdit1;
+            this.layoutControlItem10.Control = this.txt_deposit;
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(584, 32);
@@ -576,7 +611,7 @@
             // 
             // layoutControlItem11
             // 
-            this.layoutControlItem11.Control = this.textEdit2;
+            this.layoutControlItem11.Control = this.txt_discount;
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 57);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Size = new System.Drawing.Size(299, 32);
@@ -623,6 +658,15 @@
             this.emptySpaceItem9.Name = "emptySpaceItem9";
             this.emptySpaceItem9.Size = new System.Drawing.Size(285, 32);
             this.emptySpaceItem9.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.label1;
+            this.layoutControlItem13.Location = new System.Drawing.Point(505, 114);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(79, 32);
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem13.TextVisible = false;
             // 
             // panel3
             // 
@@ -823,7 +867,7 @@
             this.txt_email_customer.Name = "txt_email_customer";
             this.txt_email_customer.Size = new System.Drawing.Size(445, 28);
             this.txt_email_customer.StyleController = this.layoutControl1;
-            this.txt_email_customer.TabIndex = 8;
+            this.txt_email_customer.TabIndex = 5;
             // 
             // txt_cmnd_customer
             // 
@@ -832,7 +876,7 @@
             this.txt_cmnd_customer.Name = "txt_cmnd_customer";
             this.txt_cmnd_customer.Size = new System.Drawing.Size(146, 28);
             this.txt_cmnd_customer.StyleController = this.layoutControl1;
-            this.txt_cmnd_customer.TabIndex = 7;
+            this.txt_cmnd_customer.TabIndex = 2;
             // 
             // txt_phone_customer
             // 
@@ -841,7 +885,7 @@
             this.txt_phone_customer.Name = "txt_phone_customer";
             this.txt_phone_customer.Size = new System.Drawing.Size(445, 28);
             this.txt_phone_customer.StyleController = this.layoutControl1;
-            this.txt_phone_customer.TabIndex = 6;
+            this.txt_phone_customer.TabIndex = 4;
             // 
             // txt_name_customer
             // 
@@ -850,7 +894,7 @@
             this.txt_name_customer.Name = "txt_name_customer";
             this.txt_name_customer.Size = new System.Drawing.Size(445, 28);
             this.txt_name_customer.StyleController = this.layoutControl1;
-            this.txt_name_customer.TabIndex = 5;
+            this.txt_name_customer.TabIndex = 3;
             // 
             // search_customer
             // 
@@ -864,7 +908,7 @@
             this.search_customer.Properties.EditValueChanged += new System.EventHandler(this.search_customer_Properties_EditValueChanged);
             this.search_customer.Size = new System.Drawing.Size(159, 28);
             this.search_customer.StyleController = this.layoutControl1;
-            this.search_customer.TabIndex = 4;
+            this.search_customer.TabIndex = 0;
             // 
             // searchLookUpEdit_customer
             // 
@@ -1014,23 +1058,6 @@
             this.emptySpaceItem5.Size = new System.Drawing.Size(585, 19);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(517, 126);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 28);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "VNĐ";
-            // 
-            // layoutControlItem13
-            // 
-            this.layoutControlItem13.Control = this.label1;
-            this.layoutControlItem13.Location = new System.Drawing.Point(505, 114);
-            this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(79, 32);
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem13.TextVisible = false;
-            // 
             // FInfoRoomDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -1051,6 +1078,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUp_Service)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpin_quatity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -1060,8 +1088,8 @@
             this.layoutControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txt_sum_service_using.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_discount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_deposit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
@@ -1070,6 +1098,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
@@ -1109,7 +1138,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1143,7 +1171,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn col_quantity;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraEditors.TextEdit txt_cmnd_customer;
         private DevExpress.XtraEditors.TextEdit txt_phone_customer;
@@ -1177,7 +1205,7 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem6;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem7;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem8;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn col_total;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUp_Service;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
@@ -1185,10 +1213,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn col_price;
         private DevExpress.XtraEditors.TextEdit txt_sum_service_using;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txt_discount;
+        private DevExpress.XtraEditors.TextEdit txt_deposit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
@@ -1203,5 +1231,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem9;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpin_quatity;
     }
 }

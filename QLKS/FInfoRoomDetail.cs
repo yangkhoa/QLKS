@@ -20,6 +20,10 @@ namespace QLKS
         private Account _loginAccount;
         private string _code_room;
 
+        private int _quatity =0;
+        private double _price =0;
+        private double _total = 0;
+
         public Account LoginAccount { get => _loginAccount; set => _loginAccount = value; }
         public string Code_room { get => _code_room; set => _code_room = value; }
 
@@ -53,8 +57,9 @@ namespace QLKS
             Bill bill = BillDAL.Instance.GetInfoBillByIdBill(id_bill);
             date_customer_checkin.Text = bill.Date_checkin.ToString();
 
-            txt_sum_service_using.Text = BillDetailDAL.Instance.GetSumUpTotalServiceById(id_bill).ToString();
-
+            txt_sum_service_using.Text = String.Format("{0:0,0}", BillDetailDAL.Instance.GetSumUpTotalServiceById(id_bill));
+            txt_deposit.Text = bill.Deposit.ToString();
+            txt_discount.Text = (bill.Discount * 100).ToString();
         }
 
         private void LoadInfoCustomer(int id_bill)
@@ -204,7 +209,69 @@ namespace QLKS
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
+            if (e.Column.FieldName == "code_service")
+            {
+                string code_service = gridView1.GetRowCellValue(e.RowHandle, e.Column).ToString().Trim();
+                Service sp = ServiceDAL.Instance.GetServiceByCodeService(code_service);
+                if (code_service != null)
+                {
+                    gridView1.SetRowCellValue(e.RowHandle, "price_service", sp.Price_service);
+                    if (gridView1.GetFocusedRowCellValue(col_quantity).ToString() =="")
+                    {
+                        _quatity = 0;
+                    }
+                    else
+                    {
+                        _quatity = Convert.ToInt32(gridView1.GetFocusedRowCellValue(col_quantity));
+                        _price = Convert.ToDouble(gridView1.GetFocusedRowCellValue(col_price));
+                        _total = _quatity * _price;
+                        gridView1.SetFocusedRowCellValue(col_total, _total);
+                    }
+                }
+            }
+            if (e.Column == col_quantity)
+            {
+                _quatity = Convert.ToInt32(gridView1.GetFocusedRowCellValue(col_quantity));
+                _price = Convert.ToDouble(gridView1.GetFocusedRowCellValue(col_price));
+                _total = _quatity * _price;
+                gridView1.SetFocusedRowCellValue(col_total, _total);
+            }
+        }
 
+        private void btn_SwapRoom_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btn_Payment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
+
+            if (id_bill!=-1)
+            {
+                string query = "UPDATE Bill SET date_checkout = GETDATE() WHERE id_bill =" + id_bill;
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                FBill f = new FBill(id_bill,txt_sum_service_using.Text,txt_price_room.Text, txt_deposit.Text, txt_discount.Text,Code_room);
+                f.ShowDialog();
+
+                this.Close();
+            }          
+        }
+
+        private void txt_discount_Leave(object sender, EventArgs e)
+        {
+            int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
+            double discount = Convert.ToDouble(txt_discount.Text);
+            DataProvider.Instance.ExecuteNonQuery("UPDATE Bill SET discount = " + discount * 0.01 + " WHERE id_bill =" + id_bill);
+        }
+
+        private void txt_deposit_Leave(object sender, EventArgs e)
+        {
+            int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
+            double deposit = Convert.ToDouble(txt_deposit.Text);
+            DataProvider.Instance.ExecuteNonQuery("UPDATE Bill SET deposit = " + deposit + " WHERE id_bill =" + id_bill);
         }
     }
 }

@@ -20,9 +20,13 @@ namespace BLL
 
         public void InsertBill(string code_employee, string code_room, string code_customer)
         {
-            DataProvider.Instance.ExecuteQuery("EXEC USP_InsertBill @code_employee , @code_room , @code_customer", new object[] { code_employee, code_room, code_customer });
+            DataProvider.Instance.ExecuteNonQuery("EXEC USP_InsertBill @code_employee , @code_room , @code_customer", new object[] { code_employee, code_room, code_customer });
         }
 
+        public void Checkout(int id_bill, string code_room, double deposit, double discount)
+        {
+            DataProvider.Instance.ExecuteNonQuery("EXEC USP_PayBill @id_bill , @code_room , @discount , @deposit", new object[] { id_bill, code_room, discount, deposit });
+        }
     }
 }
  

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 
 namespace DAL
 {
@@ -31,6 +32,15 @@ namespace DAL
             string query = "SELECT * FROM Service WHERE code_category=N'"+code_category+"'";
 
             return DataProvider.Instance.ExecuteQuery(query);
+        }
+
+        public Service GetServiceByCodeService(string code_service)
+        {
+            string query = "SELECT * FROM Service WHERE code_service=N'" + code_service + "'";
+
+            DataRow item = DataProvider.Instance.ExecuteQuery(query).Rows[0];
+
+            return new Service(item);
         }
     }
 }

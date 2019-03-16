@@ -151,5 +151,11 @@ namespace QLKS
             FBooking f = new FBooking();
             f.ShowDialog();
         }
+
+        private void BarButton_Team_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FTeam f = new FTeam();
+            f.ShowDialog();
+        }
     }
 }

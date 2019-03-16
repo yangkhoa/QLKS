@@ -74,7 +74,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(924, 410);
+            this.panelControl1.Size = new System.Drawing.Size(924, 409);
             this.panelControl1.TabIndex = 0;
             // 
             // gridControl_Room
@@ -86,7 +86,7 @@
             this.gridControl_Room.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUp_RoomType,
             this.repositoryItemSearchLookUp_RoomStatus});
-            this.gridControl_Room.Size = new System.Drawing.Size(920, 406);
+            this.gridControl_Room.Size = new System.Drawing.Size(920, 405);
             this.gridControl_Room.TabIndex = 0;
             this.gridControl_Room.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -178,6 +178,8 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Giá phòng";
+            this.gridColumn8.DisplayFormat.FormatString = "#,#";
+            this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn8.FieldName = "price";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
@@ -314,9 +316,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 410);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 409);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(924, 34);
+            this.barDockControlBottom.Size = new System.Drawing.Size(924, 35);
             // 
             // barDockControlLeft
             // 
@@ -324,7 +326,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 410);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 409);
             // 
             // barDockControlRight
             // 
@@ -332,7 +334,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(924, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 410);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 409);
             // 
             // FRoom
             // 
