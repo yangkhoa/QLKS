@@ -19,11 +19,11 @@ namespace BLL
 
         private RoomBLL() { }
 
-        public void EditRoom(string col_1, string col_2, string col_3, string col_4, string col_5)
+        public void EditRoom(string code_room, string name_room, string code_type, string code_status, string note)
         {
             string query = "UPDATE Room SET name_room = N'{1}', code_type = N'{2}', code_status = N'{3}', note = N'{4}' WHERE code_room = N'{0}'";
 
-            query = string.Format(query, col_1, col_2,col_3,col_4,col_5);
+            query = string.Format(query, code_room, name_room, code_type, code_status, note);
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }
@@ -37,11 +37,11 @@ namespace BLL
             DataProvider.Instance.ExecuteNonQuery(query);
         }
 
-        public void InsertRoom(string col_1, string col_2, string col_3, string col_4, string col_5)
+        public void InsertRoom(string code_room, string name_room, string code_type, string code_status, string note)
         {
             string query = "INSERT Room(code_room,name_room,code_type,code_status,note) VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')";
 
-            query = string.Format(query, col_1, col_2, col_3, col_4, col_5);
+            query = string.Format(query, code_room, name_room, code_type, code_status, note);
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }

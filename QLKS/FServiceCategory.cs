@@ -31,11 +31,11 @@ namespace QLKS
         {
             if (!gridView1.IsNewItemRow(gridView1.FocusedRowHandle))
             {
-                string col_1 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
-                string col_2 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string code_service_category = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
+                string name_cateogory = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
                 try
                 {
-                    ServiceCategoryBLL.Instance.EditServiceCategory(col_1, col_2);
+                    ServiceCategoryBLL.Instance.EditServiceCategory(code_service_category, name_cateogory);
                 }
                 catch
                 {
@@ -53,12 +53,12 @@ namespace QLKS
             if (view.IsNewItemRow(e.RowHandle))
             {
                 // Thêm mới trực tiếp vào form
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
+                string code_service_category = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
+                string name_cateogory = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
 
                 try
                 {
-                   ServiceCategoryBLL.Instance.InsertServiceCategory(col_1, col_2);
+                   ServiceCategoryBLL.Instance.InsertServiceCategory(code_service_category, name_cateogory);
                 }
                 catch
                 {
@@ -68,11 +68,11 @@ namespace QLKS
             else
             {
                 // Sửa trực tiếp trên form
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";              
+                string code_service_category = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
+                string name_cateogory = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";              
                 try
                 {
-                    ServiceCategoryBLL.Instance.EditServiceCategory(col_1, col_2);
+                    ServiceCategoryBLL.Instance.EditServiceCategory(code_service_category, name_cateogory);
                 }
                 catch
                 {

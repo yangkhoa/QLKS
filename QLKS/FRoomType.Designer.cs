@@ -134,7 +134,7 @@
             this.gridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn3.Caption = "Giá";
+            this.gridColumn3.Caption = "Giá (giờ)";
             this.gridColumn3.ColumnEdit = this.repositoryItemTextEdit3;
             this.gridColumn3.DisplayFormat.FormatString = "#,#";
             this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;

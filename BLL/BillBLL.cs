@@ -27,6 +27,11 @@ namespace BLL
         {
             DataProvider.Instance.ExecuteNonQuery("EXEC USP_PayBill @id_bill , @code_room , @discount , @deposit", new object[] { id_bill, code_room, discount, deposit });
         }
+
+        public void SwapRoom(string code_room_old, string code_room_new)
+        {
+            DataProvider.Instance.ExecuteNonQuery("EXEC USP_SwapRoom @code_room_old , @code_room_new", new object[] { code_room_old, code_room_new });
+        }
     }
 }
  

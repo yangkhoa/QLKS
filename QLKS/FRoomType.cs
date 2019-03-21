@@ -31,13 +31,13 @@ namespace QLKS
         {
             if (!gridView1.IsNewItemRow(gridView1.FocusedRowHandle))
             {
-                string col_1 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
-                string col_2 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
-                string col_3 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString() + "";
-                string col_4 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString() + "";
-                string col_5 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
+                string code_room_type = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
+                string name_type = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string price = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString() + "";
+                string number_min = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString() + "";
+                string number_max = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
 
-                RoomTypeBLL.Instance.EditRoomType(col_1, col_2, col_3, col_4, col_5);
+                RoomTypeBLL.Instance.EditRoomType(code_room_type, name_type, price, number_min, number_max);
             }
 
 
@@ -71,24 +71,24 @@ namespace QLKS
             if (view.IsNewItemRow(e.RowHandle))
             {
                 // Thêm mới trực tiếp vào form
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
-                string col_3 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
-                string col_4 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
-                string col_5 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[4]).ToString() + "";
+                string code_room_type = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
+                string name_type = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string price = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString() + "";
+                string number_min = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString() + "";
+                string number_max = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
 
-                RoomTypeBLL.Instance.InsertRoomType(col_1, col_2, col_3, col_4, col_5);
+                RoomTypeBLL.Instance.InsertRoomType(code_room_type, name_type, price, number_min, number_max);
             }
             else
             {
                 // Sửa trực tiếp trên form
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
-                string col_3 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
-                string col_4 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
-                string col_5 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[4]).ToString() + "";
+                string code_room_type = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
+                string name_type = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string price = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString() + "";
+                string number_min = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString() + "";
+                string number_max = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
 
-                RoomTypeBLL.Instance.EditRoomType(col_1, col_2, col_3, col_4, col_5);
+                RoomTypeBLL.Instance.EditRoomType(code_room_type, name_type, price, number_min, number_max);
             }
         }
     }

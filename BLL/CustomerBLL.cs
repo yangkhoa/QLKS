@@ -19,11 +19,11 @@ namespace BLL
 
         private CustomerBLL() { }
 
-        public void EditInfoCustomer(string col_1, string col_2, string col_3, string col_4, string col_5)
+        public void EditInfoCustomer(string code_customer, string name_customer, string phone_customer, string cmnd_customer, string email_customer)
         {
             string query = "UPDATE Customer SET name_customer=N'{1}', cmnd_customer=N'{2}', phone_customer=N'{3}', email_customer=N'{4}' WHERE code_customer=N'{0}'";
 
-            query = string.Format(query, col_1, col_2, col_3, col_4, col_5);
+            query = string.Format(query, code_customer, name_customer, phone_customer, cmnd_customer, email_customer);
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }
@@ -37,11 +37,11 @@ namespace BLL
             DataProvider.Instance.ExecuteNonQuery(query);
         }
 
-        public void InsertCustomer(string col_1, string col_2, string col_3, string col_4, string col_5)
+        public void InsertCustomer(string code_customer, string name_customer, string phone_customer, string cmnd_customer, string email_customer)
         {
             string query = "INSERT Customer(code_customer,name_customer,phone_customer,cmnd_customer,email_customer) VALUES(N'{0}', N'{1}', N'{2}', N'{3}', N'{4}')";
 
-            query = string.Format(query, col_1, col_2, col_3, col_4,col_5);
+            query = string.Format(query, code_customer, name_customer, phone_customer, cmnd_customer, email_customer);
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }

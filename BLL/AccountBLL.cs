@@ -46,20 +46,20 @@ namespace BLL
             return rs > 0;
         }
 
-        public void InsertAccount(string col_1, string col_2, string col_3, string col_4)
+        public void InsertAccount(string username, string password, string display_name, string code_position)
         {
             string query = "INSERT Account(username,password,display_name,code_position) VALUES(N'{0}', N'{1}', N'{2}', N'{3}')";
 
-            query = string.Format(query, col_1, col_2, col_3, col_4);
+            query = string.Format(query, username, password, display_name, code_position);
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }
 
-        public void EditAccount(string col_1, string col_2, string col_3, string col_4)
+        public void EditAccount(string username, string password, string display_name, string code_position)
         {
             string query = "UPDATE Account SET password = N'{1}',display_name = N'{2}',code_position = N'{3}' WHERE username = N'{0}'";
 
-            query = string.Format(query, col_1, col_2, col_3, col_4);
+            query = string.Format(query, username, password, display_name, code_position);
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }

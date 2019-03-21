@@ -105,9 +105,10 @@
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(328, 44);
             this.btn_Exit.TabIndex = 14;
+            this.btn_Exit.TabStop = false;
             this.btn_Exit.Text = "Kết thúc";
             this.btn_Exit.UseVisualStyleBackColor = true;
-            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
+            this.btn_Exit.Click += new System.EventHandler(this.Btn_Exit_Click);
             // 
             // btn_Approve
             // 
@@ -115,9 +116,10 @@
             this.btn_Approve.Name = "btn_Approve";
             this.btn_Approve.Size = new System.Drawing.Size(326, 44);
             this.btn_Approve.TabIndex = 13;
+            this.btn_Approve.TabStop = false;
             this.btn_Approve.Text = "Xác nhận";
             this.btn_Approve.UseVisualStyleBackColor = true;
-            this.btn_Approve.Click += new System.EventHandler(this.btn_Approve_Click);
+            this.btn_Approve.Click += new System.EventHandler(this.Btn_Approve_Click);
             // 
             // txt_total_final
             // 
@@ -126,6 +128,7 @@
             this.txt_total_final.ReadOnly = true;
             this.txt_total_final.Size = new System.Drawing.Size(373, 25);
             this.txt_total_final.TabIndex = 12;
+            this.txt_total_final.TabStop = false;
             // 
             // txt_discount
             // 
@@ -134,6 +137,7 @@
             this.txt_discount.ReadOnly = true;
             this.txt_discount.Size = new System.Drawing.Size(72, 25);
             this.txt_discount.TabIndex = 11;
+            this.txt_discount.TabStop = false;
             // 
             // txt_deposit
             // 
@@ -142,6 +146,7 @@
             this.txt_deposit.ReadOnly = true;
             this.txt_deposit.Size = new System.Drawing.Size(166, 25);
             this.txt_deposit.TabIndex = 10;
+            this.txt_deposit.TabStop = false;
             // 
             // txt_total_service
             // 
@@ -150,6 +155,7 @@
             this.txt_total_service.ReadOnly = true;
             this.txt_total_service.Size = new System.Drawing.Size(450, 25);
             this.txt_total_service.TabIndex = 9;
+            this.txt_total_service.TabStop = false;
             // 
             // txt_total_rent
             // 
@@ -158,6 +164,7 @@
             this.txt_total_rent.ReadOnly = true;
             this.txt_total_rent.Size = new System.Drawing.Size(450, 25);
             this.txt_total_rent.TabIndex = 8;
+            this.txt_total_rent.TabStop = false;
             // 
             // txt_price_room
             // 
@@ -166,6 +173,7 @@
             this.txt_price_room.ReadOnly = true;
             this.txt_price_room.Size = new System.Drawing.Size(150, 25);
             this.txt_price_room.TabIndex = 7;
+            this.txt_price_room.TabStop = false;
             // 
             // txt_date_count
             // 
@@ -174,6 +182,7 @@
             this.txt_date_count.ReadOnly = true;
             this.txt_date_count.Size = new System.Drawing.Size(88, 25);
             this.txt_date_count.TabIndex = 6;
+            this.txt_date_count.TabStop = false;
             // 
             // txt_date_check_out
             // 
@@ -182,6 +191,7 @@
             this.txt_date_check_out.ReadOnly = true;
             this.txt_date_check_out.Size = new System.Drawing.Size(450, 25);
             this.txt_date_check_out.TabIndex = 5;
+            this.txt_date_check_out.TabStop = false;
             // 
             // txt_date_check_in
             // 
@@ -190,6 +200,7 @@
             this.txt_date_check_in.ReadOnly = true;
             this.txt_date_check_in.Size = new System.Drawing.Size(450, 25);
             this.txt_date_check_in.TabIndex = 4;
+            this.txt_date_check_in.TabStop = false;
             // 
             // layoutControlGroup1
             // 
@@ -237,7 +248,7 @@
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 58);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(300, 29);
-            this.layoutControlItem3.Text = "Số ngày:";
+            this.layoutControlItem3.Text = "Số giờ sử dụng:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(205, 23);
             // 
             // layoutControlItem4
@@ -246,8 +257,8 @@
             this.layoutControlItem4.Location = new System.Drawing.Point(300, 58);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(362, 29);
-            this.layoutControlItem4.Text = "Giá thuê(ngày):";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(205, 22);
+            this.layoutControlItem4.Text = "Giá thuê (giờ):";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(205, 23);
             // 
             // layoutControlItem5
             // 
@@ -301,12 +312,12 @@
             this.emptySpaceItem4.AppearanceItemCaption.Options.UseTextOptions = true;
             this.emptySpaceItem4.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.emptySpaceItem4.AppearanceItemCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.emptySpaceItem4.CustomizationFormText = "Số tiền thanh toán =( Tổng tiền thuê * Giảm giá ) + Tổng tiền dịch vụ - Đặt cọc";
+            this.emptySpaceItem4.CustomizationFormText = "0";
             this.emptySpaceItem4.Location = new System.Drawing.Point(0, 174);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
             this.emptySpaceItem4.Size = new System.Drawing.Size(662, 123);
-            this.emptySpaceItem4.Text = "Số tiền thanh toán = ( Tổng tiền thuê * (1- Giảm giá) )+ Tổng tiền dịch vụ - Đặt " +
-    "cọc";
+            this.emptySpaceItem4.Text = "Số tiền thanh toán = ( Tổng tiền thuê * ( 1- Giảm giá )) + Tổng tiền dịch vụ - Đặ" +
+    "t cọc";
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(205, 0);
             this.emptySpaceItem4.TextVisible = true;
             // 

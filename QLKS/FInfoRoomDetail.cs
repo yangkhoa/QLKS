@@ -50,6 +50,8 @@ namespace QLKS
             LoadInfoService();
 
             LoadInfoRoom(Code_room);
+
+            LoadRoomSwap();
         }
 
         private void LoadInfoBill(int id_bill)
@@ -114,7 +116,7 @@ namespace QLKS
 
         }
 
-        private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        private void GridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {
             if (barStatic_id_bill.Caption != null)
             {
@@ -123,32 +125,46 @@ namespace QLKS
                 if (view.IsNewItemRow(e.RowHandle))
                 {
                     // Thêm mới trực tiếp vào form
-                    string code_service = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim();
-                    int quatity = (int)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]);
                     try
                     {
-                        BillDetailBLL.Instance.InsertServiceUsing(id_bill, code_service, quatity);
+                        string code_service = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim();
+                        int quatity = (int)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]);
+                        try
+                        {
+                            BillDetailBLL.Instance.InsertServiceUsing(id_bill, code_service, quatity);
 
-                        LoadInfoBill(id_bill);
+                            LoadInfoBill(id_bill);
+                        }
+                        catch
+                        {
+                            LoadServiceUsing(id_bill);
+                        }
                     }
-                    catch
+                    catch (Exception)
                     {
                         LoadServiceUsing(id_bill);
                     }
                 }
                 else
                 {
-                    //Sửa trực tiếp trên form
-                    int id_bill_detail = (int)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]);
-                    string code_service = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim();
-                    int quatity = (int)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]);
                     try
                     {
-                        BillDetailBLL.Instance.EditServiceUsing(id_bill_detail, code_service, quatity);
+                        //Sửa trực tiếp trên form
+                        int id_bill_detail = (int)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]);
+                        string code_service = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim();
+                        int quatity = (int)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]);
+                        try
+                        {
+                            BillDetailBLL.Instance.EditServiceUsing(id_bill_detail, code_service, quatity);
 
-                        LoadInfoBill(id_bill);
+                            LoadInfoBill(id_bill);
+                        }
+                        catch
+                        {
+                            LoadServiceUsing(id_bill);
+                        }
                     }
-                    catch
+                    catch (Exception)
                     {
                         LoadServiceUsing(id_bill);
                     }
@@ -156,28 +172,26 @@ namespace QLKS
             }
         }
 
-        private void btn_Approve_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void Btn_Approve_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room) == -1 && txt_name_customer.Text != null)
+            if (BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room) == -1 && txt_name_customer.Text != "")
             {
                 if (MessageBox.Show("Bạn có muốn tạo hóa đơn mới?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     try
                     {
-                        string code_employee = "E001";
-
-                        BillBLL.Instance.InsertBill(code_employee, txt_name_room.Text, search_customer.Text);
+                        BillBLL.Instance.InsertBill(LoginAccount.Username, txt_name_room.Text, search_customer.Text);
                     }
-                    catch{}
+                    catch (Exception) { }
                 }
             }
 
             this.Close();
         }
 
-        private void btn_DeleteServiceUsing_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void Btn_DeleteServiceUsing_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn xóa dịch vụ này?", "Xác nhận", MessageBoxButtons.YesNo) != DialogResult.Yes)
+            if (MessageBox.Show("Bạn có muốn xóa dịch vụ này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int id_bill_detail = (int)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]);
                 int id_bill = (int)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]);
@@ -194,7 +208,7 @@ namespace QLKS
             }
         }
 
-        private void search_customer_Properties_EditValueChanged(object sender, EventArgs e)
+        private void Search_customer_Properties_EditValueChanged(object sender, EventArgs e)
         {
             Customer person = CustomerDAL.Instance.FindCustomerByCodeCustomer(search_customer.Text);
             try
@@ -204,10 +218,10 @@ namespace QLKS
                 txt_cmnd_customer.Text = person.Cmnd_customer;
                 txt_email_customer.Text = person.Email_customer;
             }
-            catch { }
+            catch (Exception) { }
         }
 
-        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        private void GridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             if (e.Column.FieldName == "code_service")
             {
@@ -221,57 +235,104 @@ namespace QLKS
                         _quatity = 0;
                     }
                     else
-                    {
-                        _quatity = Convert.ToInt32(gridView1.GetFocusedRowCellValue(col_quantity));
-                        _price = Convert.ToDouble(gridView1.GetFocusedRowCellValue(col_price));
-                        _total = _quatity * _price;
-                        gridView1.SetFocusedRowCellValue(col_total, _total);
+                    {                     
+                        try
+                        {
+                            _quatity = Convert.ToInt32(gridView1.GetFocusedRowCellValue(col_quantity));
+                            _price = Convert.ToDouble(gridView1.GetFocusedRowCellValue(col_price));
+                            _total = _quatity * _price;
+                            gridView1.SetFocusedRowCellValue(col_total, _total);
+                        }
+                        catch (Exception) { }
                     }
                 }
             }
             if (e.Column == col_quantity)
             {
-                _quatity = Convert.ToInt32(gridView1.GetFocusedRowCellValue(col_quantity));
-                _price = Convert.ToDouble(gridView1.GetFocusedRowCellValue(col_price));
-                _total = _quatity * _price;
-                gridView1.SetFocusedRowCellValue(col_total, _total);
+                try
+                {
+                    _quatity = Convert.ToInt32(gridView1.GetFocusedRowCellValue(col_quantity));
+                    _price = Convert.ToDouble(gridView1.GetFocusedRowCellValue(col_price));
+                    _total = _quatity * _price;
+                    gridView1.SetFocusedRowCellValue(col_total, _total);
+                }
+                catch (Exception) { }
             }
         }
 
-        private void btn_SwapRoom_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void Btn_SwapRoom_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            if (BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room) !=-1)
+            {
+                if (MessageBox.Show("Bạn có muốn chuyển phòng không?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        BillBLL.Instance.SwapRoom(Code_room, barEdit_Room.EditValue.ToString().Trim());
+                        this.Close();
+                    }
+                    catch (Exception) { }
+                }
+            }
         }
 
-        private void btn_Payment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void Btn_Payment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
 
             if (id_bill!=-1)
             {
-                string query = "UPDATE Bill SET date_checkout = GETDATE() WHERE id_bill =" + id_bill;
+                try
+                {
+                    string query = "UPDATE Bill SET date_checkout = GETDATE() WHERE id_bill =" + id_bill;
 
-                DataProvider.Instance.ExecuteNonQuery(query);
+                    DataProvider.Instance.ExecuteNonQuery(query);
 
-                FBill f = new FBill(id_bill,txt_sum_service_using.Text,txt_price_room.Text, txt_deposit.Text, txt_discount.Text,Code_room);
-                f.ShowDialog();
-
-                this.Close();
+                    FBill f = new FBill(id_bill, txt_sum_service_using.Text, txt_price_room.Text, txt_deposit.Text, txt_discount.Text, Code_room);
+                    f.ShowDialog();
+                    
+                    if (BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room)==-1)
+                    {
+                        this.Close();
+                    }                
+                }
+                catch (Exception) {}
             }          
         }
 
-        private void txt_discount_Leave(object sender, EventArgs e)
+        private void Txt_discount_Leave(object sender, EventArgs e)
         {
-            int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
-            double discount = Convert.ToDouble(txt_discount.Text);
-            DataProvider.Instance.ExecuteNonQuery("UPDATE Bill SET discount = " + discount * 0.01 + " WHERE id_bill =" + id_bill);
+            try
+            {
+                int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
+                double discount = Convert.ToDouble(txt_discount.Text);
+                DataProvider.Instance.ExecuteNonQuery("UPDATE Bill SET discount = " + discount * 0.01 + " WHERE id_bill =" + id_bill);
+            }
+            catch (Exception) {}
+            
         }
 
-        private void txt_deposit_Leave(object sender, EventArgs e)
+        private void Txt_deposit_Leave(object sender, EventArgs e)
         {
-            int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
-            double deposit = Convert.ToDouble(txt_deposit.Text);
-            DataProvider.Instance.ExecuteNonQuery("UPDATE Bill SET deposit = " + deposit + " WHERE id_bill =" + id_bill);
+            try
+            {
+                int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
+                double deposit = Convert.ToDouble(txt_deposit.Text);
+                DataProvider.Instance.ExecuteNonQuery("UPDATE Bill SET deposit = " + deposit + " WHERE id_bill =" + id_bill);
+            }
+            catch(Exception) {}
+            
+        }
+
+        private void LoadRoomSwap()
+        {
+            string query = "SELECT code_room FROM Room WHERE code_room != N'"+Code_room+"' AND code_status = N'001'";
+
+            repositoryItemSearchLookUp_Room.DataSource = DataProvider.Instance.ExecuteQuery(query);
+
+            repositoryItemSearchLookUp_Room.ValueMember = "code_room";
+
+            repositoryItemSearchLookUp_Room.DisplayMember = "code_room";
         }
     }
 }

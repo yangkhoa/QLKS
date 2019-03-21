@@ -290,7 +290,7 @@
             this.btn_Approve.StyleController = this.layoutControl1;
             this.btn_Approve.TabIndex = 11;
             this.btn_Approve.Text = "Xác nhận";
-            this.btn_Approve.Click += new System.EventHandler(this.btn_Approve_Click);
+            this.btn_Approve.Click += new System.EventHandler(this.Btn_Approve_Click);
             // 
             // dateEdit_checkin
             // 
@@ -348,10 +348,11 @@
             this.txt_deposit.Name = "txt_deposit";
             this.txt_deposit.Properties.DisplayFormat.FormatString = "#,#";
             this.txt_deposit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txt_deposit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_deposit.Size = new System.Drawing.Size(474, 28);
             this.txt_deposit.StyleController = this.layoutControl1;
             this.txt_deposit.TabIndex = 9;
-            this.txt_deposit.Leave += new System.EventHandler(this.txt_deposit_Leave);
+            this.txt_deposit.Leave += new System.EventHandler(this.Txt_deposit_Leave);
             // 
             // search_lookup_customer
             // 

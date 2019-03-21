@@ -64,7 +64,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(924, 410);
+            this.layoutControl1.Size = new System.Drawing.Size(924, 409);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -73,7 +73,7 @@
             this.gridControl_Customer.Location = new System.Drawing.Point(12, 12);
             this.gridControl_Customer.MainView = this.gridView1;
             this.gridControl_Customer.Name = "gridControl_Customer";
-            this.gridControl_Customer.Size = new System.Drawing.Size(900, 386);
+            this.gridControl_Customer.Size = new System.Drawing.Size(900, 385);
             this.gridControl_Customer.TabIndex = 4;
             this.gridControl_Customer.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -93,7 +93,8 @@
             this.gridView1.OptionsFind.FindNullPrompt = "Hãy nhập thông tin cần tìm...";
             this.gridView1.OptionsFind.SearchInPreview = true;
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidateRow);
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GridView1_ValidateRow);
             // 
             // gridColumn1
             // 
@@ -142,7 +143,7 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(924, 410);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(924, 409);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -150,7 +151,7 @@
             this.layoutControlItem1.Control = this.gridControl_Customer;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(904, 390);
+            this.layoutControlItem1.Size = new System.Drawing.Size(904, 389);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -214,9 +215,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 410);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 409);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(924, 34);
+            this.barDockControlBottom.Size = new System.Drawing.Size(924, 35);
             // 
             // barDockControlLeft
             // 
@@ -224,7 +225,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 410);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 409);
             // 
             // barDockControlRight
             // 
@@ -232,7 +233,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(924, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 410);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 409);
             // 
             // FCustomer
             // 
@@ -246,7 +247,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FCustomer";
-            this.Text = "FCustomer";
+            this.Text = "Danh sách khách hàng";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Customer)).EndInit();

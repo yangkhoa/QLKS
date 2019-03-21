@@ -37,10 +37,10 @@ CREATE TABLE Room
 )
 GO
 
--- EmployeePosition
-CREATE TABLE EmployeePosition
+-- AccountPosition
+CREATE TABLE AccountPosition
 (
-	code_employee_position NVARCHAR(20) PRIMARY KEY,
+	code_account_position NVARCHAR(20) PRIMARY KEY,
 	name_position NVARCHAR(100)
 )
 GO
@@ -52,12 +52,8 @@ CREATE TABLE Employee
 	name_employee NVARCHAR(100), 
 	date_birth NVARCHAR(100),
 	phone NVARCHAR(100),
-	code_position NVARCHAR(20) NOT NULL
-
-	FOREIGN KEY (code_position) REFERENCES dbo.EmployeePosition(code_employee_position)
 )
 GO
-
 --Account
 CREATE TABLE Account
 (
@@ -66,7 +62,7 @@ CREATE TABLE Account
 	display_name NVARCHAR(100),
 	code_position NVARCHAR(20) NOT NULL
 
-	FOREIGN KEY (code_position) REFERENCES dbo.EmployeePosition(code_employee_position)
+	FOREIGN KEY (code_position) REFERENCES dbo.AccountPosition(code_account_position)
 )
 GO
 
@@ -107,7 +103,7 @@ GO
 CREATE TABLE Bill
 (
 	id_bill INT IDENTITY PRIMARY KEY,
-	code_employee NVARCHAR(20) NOT NULL,
+	username NVARCHAR(50) NOT NULL,
 	code_room NVARCHAR(20) NOT NULL,
 	code_customer NVARCHAR(20) NOT NULL,
 	date_checkin DATETIME,
@@ -119,7 +115,7 @@ CREATE TABLE Bill
 
 	FOREIGN KEY (code_room) REFERENCES dbo.Room(code_room),
 	FOREIGN KEY (code_customer) REFERENCES dbo.Customer(code_customer),
-	FOREIGN KEY (code_employee) REFERENCES dbo.Employee(code_employee)
+	FOREIGN KEY (username) REFERENCES dbo.Account(username)
 	
 )
 GO
@@ -140,6 +136,7 @@ GO
 CREATE TABLE BookingInfo
 (
 	id_booking INT IDENTITY PRIMARY KEY,
+	username NVARCHAR(50) NOT NULL,
 	code_room NVARCHAR(20) NOT NULL,
 	code_customer NVARCHAR(20) NOT NULL,
 	date_book DATETIME,
@@ -148,24 +145,25 @@ CREATE TABLE BookingInfo
 	deposit FLOAT
 
 	FOREIGN KEY (code_customer) REFERENCES dbo.Customer(code_customer),
-	FOREIGN KEY (code_room) REFERENCES dbo.Room(code_room)
+	FOREIGN KEY (code_room) REFERENCES dbo.Room(code_room),
+	FOREIGN KEY (username) REFERENCES dbo.Account(username)
 )
 GO
 
 
 -- Thêm thông tin chức vụ nhân viên
-INSERT EmployeePosition(code_employee_position,name_position)
+INSERT AccountPosition(code_account_position,name_position)
 VALUES (N'001',N'Quản lý')
-INSERT EmployeePosition(code_employee_position,name_position)
+INSERT AccountPosition(code_account_position,name_position)
 VALUES (N'002',N'Nhân viên')
 
 -- Thêm thông tin nhân viên
-INSERT Employee(code_employee,name_employee,date_birth,phone,code_position)
-VALUES (N'E001',N'Nguyễn Ngọc Đăng Khoa',N'06/06/1998',N'0123465789',N'001')
-INSERT Employee(code_employee,name_employee,date_birth,phone,code_position)
-VALUES (N'E002',N'Nguyễn Đình Khánh Du',N'01/01/1998',N'0456789123',N'002')
-INSERT Employee(code_employee,name_employee,date_birth,phone,code_position)
-VALUES (N'E003',N'Phạm Huỳnh Đức',N'01/02/1998',N'0789465123',N'002')
+INSERT Employee(code_employee,name_employee,date_birth,phone)
+VALUES (N'E001',N'Nguyễn Ngọc Đăng Khoa',N'06/06/1998',N'0123465789')
+INSERT Employee(code_employee,name_employee,date_birth,phone)
+VALUES (N'E002',N'Nguyễn Đình Khánh Du',N'01/01/1998',N'0456789123')
+INSERT Employee(code_employee,name_employee,date_birth,phone)
+VALUES (N'E003',N'Phạm Huỳnh Đức',N'01/02/1998',N'0789465123')
 
 -- Thêm thông tin account
 INSERT Account(username,password,display_name,code_position)
@@ -235,33 +233,6 @@ VALUES (N'CUONG1112',N'Quốc Cường',N'01234561112',N'02588456625',N'cuonghih
 INSERT Customer(code_customer,name_customer,phone_customer,cmnd_customer,email_customer)
 VALUES (N'KHACHLE',N'',N'',N'',N'')
 
---Thêm hóa đơn
-INSERT Bill(code_employee,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
-VALUES (N'E001',N'101',N'SUSAN0715',GETDATE(),NULL,0,0,0,GETDATE())
-INSERT Bill(code_employee,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
-VALUES (N'E001',N'102',N'KHOA4442',GETDATE(),NULL,0,0,0,GETDATE())
-INSERT Bill(code_employee,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
-VALUES (N'E001',N'103',N'CUONG1112',GETDATE(),NULL,0,0,0,GETDATE())
-
---Thêm chi tiết hóa đơn
-INSERT BillDetail(id_bill,code_service,quatity_service)
-VALUES (1,N'AU001',4)
-INSERT BillDetail(id_bill,code_service,quatity_service)
-VALUES (1,N'AU002',2)
-INSERT BillDetail(id_bill,code_service,quatity_service)
-VALUES (1,N'AU003',1)
-INSERT BillDetail(id_bill,code_service,quatity_service)
-VALUES (2,N'AU001',3)
-INSERT BillDetail(id_bill,code_service,quatity_service)
-VALUES (2,N'AU002',2)
-INSERT BillDetail(id_bill,code_service,quatity_service)
-VALUES (2,N'AU003',1)
-INSERT BillDetail(id_bill,code_service,quatity_service)
-VALUES (3,N'AU001',1)
-INSERT BillDetail(id_bill,code_service,quatity_service)
-VALUES (3,N'AU002',3)
-INSERT BillDetail(id_bill,code_service,quatity_service)
-VALUES (3,N'AU003',2)
 
 -- Stored Procedure Đăng nhập
 CREATE PROC USP_Login
@@ -306,16 +277,16 @@ EXEC USP_UpdateAccount
 
 -- Store Procedure để thêm Bill mới
 CREATE PROC USP_InsertBill
-@code_employee NVARCHAR(100), @code_room NVARCHAR(100), @code_customer NVARCHAR(100)
+@username NVARCHAR(50), @code_room NVARCHAR(100), @code_customer NVARCHAR(100)
 AS
 BEGIN
-	INSERT Bill(code_employee,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
-	VALUES (@code_employee, @code_room, @code_customer,GETDATE(),NULL,0,0,0,GETDATE())
+	INSERT Bill(username,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
+	VALUES (@username, @code_room, @code_customer,GETDATE(),NULL,0,0,0,GETDATE())
 
 	UPDATE Room SET code_status = N'002' WHERE code_room = @code_room
 END
+GO
 
-EXEC USP_InsertBill @code_employee = N'E001', @code_room = N'104', @code_customer = N'CUONG1112'
 
 -- Store Procedure để thanh toán
 CREATE PROC USP_PayBill
@@ -327,7 +298,25 @@ BEGIN
 	UPDATE Bill SET status_bill = 1 , deposit = @deposit , discount = @discount WHERE id_bill = @id_bill
 END
 
+-- Store Procedure để chuyển phòng
+CREATE PROC USP_SwapRoom
+@code_room_old NVARCHAR(100), @code_room_new NVARCHAR (100)
+AS
+BEGIN
+	DECLARE @id_bill INT
+	SELECT @id_bill = id_bill FROM Bill WHERE code_room = @code_room_old AND status_bill = 0
+		
+	UPDATE Bill SET code_room = @code_room_new WHERE id_bill = @id_bill
+	UPDATE Room SET code_status = N'001' WHERE code_room = @code_room_old
+	UPDATE Room SET code_status = N'002' WHERE code_room = @code_room_new
+END
+
+
 ----------------------------------------------------------------
+
+
+
+
 
 SELECT * FROM BillDetail
 
@@ -335,5 +324,16 @@ SELECT * FROM RoomStatus
 
 SELECT date_checkin, date_checkout,DATEDIFF(dd, date_checkin, date_checkout) as count_day FROM Bill WHERE id_bill = 2
 	
-SELECT * FROM Bill
+SELECT * FROM Room
 
+SELECT code_room
+FROM Room
+WHERE code_room != N'101' AND code_status = N'001'
+
+SELECT * FROM Employee
+
+INSERT Employee(code_employee,name_employee,date_birth,phone)
+VALUES (N'E004',N'Phạm Huỳnh Đức',N'01/02/1998',N'0789465123')
+
+UPDATE Employee SET name_employee=N'' , date_birth = N'' , phone = N'' WHERE code_employee = N''
+DELETE Employee WHERE code_employee = N'E004'

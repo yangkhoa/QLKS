@@ -62,10 +62,16 @@
             this.btn_SwapRoom = new DevExpress.XtraBars.BarButtonItem();
             this.btn_DeleteServiceUsing = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Approve = new DevExpress.XtraBars.BarButtonItem();
+            this.barEdit_Room = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemSearchLookUp_Room = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.repositoryItemSearchControl1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchControl();
+            this.repositoryItemComboBox_Room = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.txt_discount = new DevExpress.XtraEditors.TextEdit();
             this.txt_deposit = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -134,6 +140,10 @@
             this.layoutControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_sum_service_using.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUp_Room)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_Room)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_discount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_deposit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
@@ -232,8 +242,8 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
-            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidateRow);
+            this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.GridView1_CellValueChanged);
+            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GridView1_ValidateRow);
             // 
             // gridColumn1
             // 
@@ -457,8 +467,13 @@
             this.barStaticItem1,
             this.barStatic_id_bill,
             this.btn_DeleteServiceUsing,
-            this.btn_Approve});
-            this.barManager1.MaxItemId = 6;
+            this.btn_Approve,
+            this.barEdit_Room});
+            this.barManager1.MaxItemId = 8;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemSearchControl1,
+            this.repositoryItemSearchLookUp_Room,
+            this.repositoryItemComboBox_Room});
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar3
@@ -474,7 +489,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_Payment, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_SwapRoom, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_DeleteServiceUsing, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_Approve, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_Approve, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEdit_Room, "", false, true, true, 72)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
@@ -497,7 +513,7 @@
             this.btn_Payment.Id = 0;
             this.btn_Payment.ImageOptions.Image = global::QLKS.Properties.Resources.currency_16x16;
             this.btn_Payment.Name = "btn_Payment";
-            this.btn_Payment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Payment_ItemClick);
+            this.btn_Payment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_Payment_ItemClick);
             // 
             // btn_SwapRoom
             // 
@@ -505,7 +521,7 @@
             this.btn_SwapRoom.Id = 1;
             this.btn_SwapRoom.ImageOptions.Image = global::QLKS.Properties.Resources.convert_16x16;
             this.btn_SwapRoom.Name = "btn_SwapRoom";
-            this.btn_SwapRoom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_SwapRoom_ItemClick);
+            this.btn_SwapRoom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_SwapRoom_ItemClick);
             // 
             // btn_DeleteServiceUsing
             // 
@@ -514,7 +530,7 @@
             this.btn_DeleteServiceUsing.Id = 4;
             this.btn_DeleteServiceUsing.ImageOptions.Image = global::QLKS.Properties.Resources.close_16x16;
             this.btn_DeleteServiceUsing.Name = "btn_DeleteServiceUsing";
-            this.btn_DeleteServiceUsing.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_DeleteServiceUsing_ItemClick);
+            this.btn_DeleteServiceUsing.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_DeleteServiceUsing_ItemClick);
             // 
             // btn_Approve
             // 
@@ -523,7 +539,40 @@
             this.btn_Approve.Id = 5;
             this.btn_Approve.ImageOptions.Image = global::QLKS.Properties.Resources.apply_16x16;
             this.btn_Approve.Name = "btn_Approve";
-            this.btn_Approve.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Approve_ItemClick);
+            this.btn_Approve.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_Approve_ItemClick);
+            // 
+            // barEdit_Room
+            // 
+            this.barEdit_Room.Caption = "barEditItem1";
+            this.barEdit_Room.Edit = this.repositoryItemSearchLookUp_Room;
+            this.barEdit_Room.Id = 7;
+            this.barEdit_Room.Name = "barEdit_Room";
+            // 
+            // repositoryItemSearchLookUp_Room
+            // 
+            this.repositoryItemSearchLookUp_Room.AutoHeight = false;
+            this.repositoryItemSearchLookUp_Room.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSearchLookUp_Room.Name = "repositoryItemSearchLookUp_Room";
+            this.repositoryItemSearchLookUp_Room.NullText = "";
+            this.repositoryItemSearchLookUp_Room.PopupView = this.gridView2;
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn4});
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Phòng";
+            this.gridColumn4.FieldName = "code_room";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
             // 
             // barDockControlTop
             // 
@@ -557,17 +606,32 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 702);
             // 
+            // repositoryItemSearchControl1
+            // 
+            this.repositoryItemSearchControl1.AutoHeight = false;
+            this.repositoryItemSearchControl1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Repository.ClearButton()});
+            this.repositoryItemSearchControl1.Name = "repositoryItemSearchControl1";
+            this.repositoryItemSearchControl1.ShowSearchButton = false;
+            // 
+            // repositoryItemComboBox_Room
+            // 
+            this.repositoryItemComboBox_Room.AutoHeight = false;
+            this.repositoryItemComboBox_Room.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox_Room.Name = "repositoryItemComboBox_Room";
+            // 
             // txt_discount
             // 
             this.txt_discount.EditValue = "0";
             this.txt_discount.Location = new System.Drawing.Point(169, 69);
             this.txt_discount.MenuManager = this.barManager1;
             this.txt_discount.Name = "txt_discount";
-            this.txt_discount.Properties.Mask.EditMask = "P";
+            this.txt_discount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_discount.Size = new System.Drawing.Size(138, 28);
             this.txt_discount.StyleController = this.layoutControl3;
             this.txt_discount.TabIndex = 5;
-            this.txt_discount.Leave += new System.EventHandler(this.txt_discount_Leave);
+            this.txt_discount.Leave += new System.EventHandler(this.Txt_discount_Leave);
             // 
             // txt_deposit
             // 
@@ -577,11 +641,11 @@
             this.txt_deposit.Name = "txt_deposit";
             this.txt_deposit.Properties.DisplayFormat.FormatString = "#,#";
             this.txt_deposit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txt_deposit.Properties.Mask.EditMask = "c0";
+            this.txt_deposit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_deposit.Size = new System.Drawing.Size(423, 28);
             this.txt_deposit.StyleController = this.layoutControl3;
             this.txt_deposit.TabIndex = 4;
-            this.txt_deposit.Leave += new System.EventHandler(this.txt_deposit_Leave);
+            this.txt_deposit.Leave += new System.EventHandler(this.Txt_deposit_Leave);
             // 
             // layoutControlGroup3
             // 
@@ -706,6 +770,8 @@
             this.txt_price_room.Location = new System.Drawing.Point(446, 112);
             this.txt_price_room.MenuManager = this.barManager1;
             this.txt_price_room.Name = "txt_price_room";
+            this.txt_price_room.Properties.DisplayFormat.FormatString = "#,#";
+            this.txt_price_room.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txt_price_room.Properties.ReadOnly = true;
             this.txt_price_room.Size = new System.Drawing.Size(147, 28);
             this.txt_price_room.StyleController = this.layoutControl2;
@@ -799,8 +865,8 @@
             this.layoutControlItem9.Location = new System.Drawing.Point(292, 100);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(293, 32);
-            this.layoutControlItem9.Text = "Giá (ngày):";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(139, 22);
+            this.layoutControlItem9.Text = "Giá (giờ):";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(139, 23);
             // 
             // emptySpaceItem6
             // 
@@ -905,7 +971,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.search_customer.Properties.NullText = "";
             this.search_customer.Properties.PopupView = this.searchLookUpEdit_customer;
-            this.search_customer.Properties.EditValueChanged += new System.EventHandler(this.search_customer_Properties_EditValueChanged);
+            this.search_customer.Properties.EditValueChanged += new System.EventHandler(this.Search_customer_Properties_EditValueChanged);
             this.search_customer.Size = new System.Drawing.Size(159, 28);
             this.search_customer.StyleController = this.layoutControl1;
             this.search_customer.TabIndex = 0;
@@ -1088,6 +1154,10 @@
             this.layoutControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txt_sum_service_using.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUp_Room)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox_Room)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_discount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_deposit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
@@ -1232,5 +1302,11 @@
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpin_quatity;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchControl repositoryItemSearchControl1;
+        private DevExpress.XtraBars.BarEditItem barEdit_Room;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUp_Room;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox_Room;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
     }
 }

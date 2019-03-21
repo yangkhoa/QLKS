@@ -41,11 +41,11 @@ namespace QLKS
         }
         private void LoadChucVu()
         {
-            string query = "SELECT * FROM EmployeePosition";
+            string query = "SELECT * FROM AccountPosition";
 
             repositoryItemSearchChucVu.DataSource = DataProvider.Instance.ExecuteQuery(query); // Data để chọn
 
-            repositoryItemSearchChucVu.ValueMember = "code_employee_position"; // Giá trị để lookup
+            repositoryItemSearchChucVu.ValueMember = "code_account_position"; // Giá trị để lookup
 
             repositoryItemSearchChucVu.DisplayMember = "name_position"; // Giá trị sẽ hiển thị
 
@@ -63,14 +63,14 @@ namespace QLKS
             if (view.IsNewItemRow(e.RowHandle))           
             {
                 // Thêm mới trực tiếp vào form
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
-                string col_3 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
-                string col_4 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
+                string username = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
+                string password = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
+                string display_name = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
+                string code_position = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
 
                 try
                 {
-                    AccountBLL.Instance.InsertAccount(col_1, "1", col_3, col_4);
+                    AccountBLL.Instance.InsertAccount(username, "1", display_name, code_position);
                 }
                 catch
                 {
@@ -81,15 +81,15 @@ namespace QLKS
             else
             {
                 // Sửa trực tiếp trên formn
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
-                string col_3 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
-                string col_4 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
+                string username = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
+                string password = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
+                string display_name = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
+                string code_position = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
 
 
                 try
                 {
-                    AccountBLL.Instance.EditAccount(col_1, col_2, col_3, col_4);
+                    AccountBLL.Instance.EditAccount(username, password, display_name, code_position);
                 }
                 catch
                 {

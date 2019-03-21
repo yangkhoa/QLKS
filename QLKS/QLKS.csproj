@@ -184,6 +184,9 @@
     <EmbeddedResource Include="FCustomer.resx">
       <DependentUpon>FCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FEmployee.resx">
+      <DependentUpon>FEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FInfoRoomDetail.resx">
       <DependentUpon>FInfoRoomDetail.cs</DependentUpon>
     </EmbeddedResource>

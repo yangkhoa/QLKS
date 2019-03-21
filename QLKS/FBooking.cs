@@ -43,16 +43,9 @@ namespace QLKS
             gridControl_Room.DataSource = RoomDAL.Instance.GetRoomListBooking();
         }
 
-        private void txt_deposit_Leave(object sender, EventArgs e)
+        private void Txt_deposit_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                txt_deposit.Text = String.Format("{0:0,0}", double.Parse(txt_deposit.Text)); 
-            }
-            catch
-            {
-                MessageBox.Show("Xin hãy nhập lại!!!");
-            }
+            txt_deposit.Text = String.Format("{0:0,0}", double.Parse(txt_deposit.Text)); 
         }
 
         private void Btn_Exit_Click(object sender, EventArgs e)
@@ -80,7 +73,7 @@ namespace QLKS
             txt_cmnd_passport.Text = person.Cmnd_customer;           
         }
 
-        private void btn_Approve_Click(object sender, EventArgs e)
+        private void Btn_Approve_Click(object sender, EventArgs e)
         {
             
             

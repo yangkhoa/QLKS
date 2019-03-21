@@ -19,20 +19,20 @@ namespace BLL
 
         private ServiceBLL() { }
 
-        public void InsertService(string col_1, string col_2, string col_3, string col_4, string col_5)
+        public void InsertService(string code_service, string name_service, string unit, string price_service, string code_category)
         {
             string query = "INSERT Service(code_service,name_service,unit,price_service,code_category) VALUES(N'{0}', N'{1}', N'{2}', {3}, N'{4}')";
 
-            query = string.Format(query, col_1, col_2, col_3, col_4, col_5);
+            query = string.Format(query, code_service, name_service, unit, price_service, code_category);
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }
 
-        public void EditService(string col_1, string col_2, string col_3, string col_4, string col_5)
+        public void EditService(string code_service, string name_service, string unit, string price_service, string code_category)
         {
             string query = "UPDATE Service SET name_service=N'{1}', unit = N'{2}', price_service = {3}, code_category = N'{4}' WHERE code_service = N'{0}'";
 
-            query = string.Format(query, col_1, col_2, col_3, col_4, col_5);
+            query = string.Format(query, code_service, name_service, unit, price_service, code_category);
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }

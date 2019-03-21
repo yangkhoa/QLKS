@@ -59,13 +59,13 @@ namespace QLKS
             {
                 if (!gridView1.IsNewItemRow(gridView1.FocusedRowHandle))
                 {
-                    string col_1 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
-                    string col_2 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
-                    string col_3 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString() + "";
-                    string col_4 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString() + "";
-                    string col_5 = treeView_Category.SelectedNode.Tag.ToString();
+                    string code_service = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
+                    string name_service = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                    string unit = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString() + "";
+                    string price_service = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString() + "";
+                    string code_category = treeView_Category.SelectedNode.Tag.ToString();
 
-                    ServiceBLL.Instance.EditService(col_1, col_2, col_3, col_4, col_5);
+                    ServiceBLL.Instance.EditService(code_service, name_service, unit, price_service, code_category);
                 }
             }
             catch
@@ -94,7 +94,7 @@ namespace QLKS
             }
         }
 
-        private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        private void GridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {
             GridView view = sender as GridView;
 
@@ -102,14 +102,14 @@ namespace QLKS
             if (view.IsNewItemRow(e.RowHandle))
             {
                 // Thêm mới trực tiếp vào form
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
-                string col_3 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
-                string col_4 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
-                string col_5 = treeView_Category.SelectedNode.Tag.ToString();
+                string code_service = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
+                string name_service = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string unit = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString() + "";
+                string price_service = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString() + "";
+                string code_category = treeView_Category.SelectedNode.Tag.ToString();
                 try
                 {
-                    ServiceBLL.Instance.InsertService(col_1, col_2, col_3, col_4, col_5);
+                    ServiceBLL.Instance.InsertService(code_service, name_service, unit, price_service, code_category);
                 }
                 catch
                 {
@@ -119,14 +119,14 @@ namespace QLKS
             else
             {
                 // Sửa trực tiếp trên form
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
-                string col_3 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[2]).ToString() + "";
-                string col_4 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[3]).ToString() + "";
-                string col_5 = treeView_Category.SelectedNode.Tag.ToString();
+                string code_service = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
+                string name_service = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string unit = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString() + "";
+                string price_service = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString() + "";
+                string code_category = treeView_Category.SelectedNode.Tag.ToString();
                 try
                 {
-                    ServiceBLL.Instance.EditService(col_1, col_2, col_3, col_4, col_5);
+                    ServiceBLL.Instance.EditService(code_service, name_service, unit, price_service, code_category);
                 }
                 catch
                 {

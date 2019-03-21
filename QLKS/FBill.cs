@@ -45,7 +45,7 @@ namespace QLKS
 
         private void LoadBill()
         {
-            string query = "SELECT date_checkin, date_checkout,DATEDIFF(dd, date_checkin, date_checkout) as count_day FROM Bill WHERE id_bill = "+Id_bill;
+            string query = "SELECT date_checkin, date_checkout,DATEDIFF(hh, date_checkin, date_checkout) as count_day FROM Bill WHERE id_bill = " + Id_bill;
 
             DataRow row = DataProvider.Instance.ExecuteQuery(query).Rows[0];
 
@@ -64,7 +64,7 @@ namespace QLKS
             txt_total_final.Text = String.Format("{0:0,0}", ( (total * (1 - (Discount*0.01))) + Total_service_using - Deposit) );
         }
 
-        private void btn_Approve_Click(object sender, EventArgs e)
+        private void Btn_Approve_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có muốn thanh toán cho phòng " + Code_room, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
@@ -74,7 +74,7 @@ namespace QLKS
             }
         }
 
-        private void btn_Exit_Click(object sender, EventArgs e)
+        private void Btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }

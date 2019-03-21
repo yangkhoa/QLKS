@@ -190,6 +190,7 @@
             this.BarButton_Employee.ImageOptions.Image = global::QLKS.Properties.Resources.boemployee_16x16;
             this.BarButton_Employee.ImageOptions.LargeImage = global::QLKS.Properties.Resources.boemployee_32x32;
             this.BarButton_Employee.Name = "BarButton_Employee";
+            this.BarButton_Employee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButton_Employee_ItemClick);
             // 
             // ribbonPage2
             // 
@@ -292,7 +293,7 @@
             this.BarButton_Account.Id = 4;
             this.BarButton_Account.ImageOptions.LargeImage = global::QLKS.Properties.Resources.customer_32x32;
             this.BarButton_Account.Name = "BarButton_Account";
-            this.BarButton_Account.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButton_Employee_ItemClick);
+            this.BarButton_Account.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButton_Account_ItemClick);
             // 
             // ribbonPageGroup9
             // 
@@ -366,6 +367,7 @@
             this.Ribbon = this.ribbonControl1;
             this.StatusBar = this.ribbonStatusBar1;
             this.Text = "Phần mềm quản lý khách sạn";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.flowLayoutPanel_Room.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);

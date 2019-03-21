@@ -191,3 +191,4 @@ F:\study\WinForm\QLKS\QLKS\obj\Debug\QLKS.pdb
 F:\study\Winform\QLKS\QLKS\obj\Debug\QLKS.FInfoRoomDetail.resources
 F:\study\Winform\QLKS\QLKS\obj\Debug\QLKS.FTeam.resources
 F:\study\Winform\QLKS\QLKS\obj\Debug\QLKS.FBill.resources
+F:\study\Winform\QLKS\QLKS\obj\Debug\QLKS.FEmployee.resources

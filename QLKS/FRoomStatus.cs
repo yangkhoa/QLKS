@@ -31,10 +31,10 @@ namespace QLKS
         {
             if (!gridView1.IsNewItemRow(gridView1.FocusedRowHandle))
             {
-                string col_1 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
-                string col_2 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string code_room_status = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString() + "";
+                string name_status = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
 
-                RoomStatusBLL.Instance.EditRoomType(col_1, col_2);
+                RoomStatusBLL.Instance.EditRoomType(code_room_status, name_status);
             }
 
 
@@ -63,23 +63,20 @@ namespace QLKS
         {
             GridView view = sender as GridView;
 
-            // Kiểm tra xem đây là dòng mới hay cũ e.RowHandle --> trả về thứ tự dòng đang trỏ
             if (view.IsNewItemRow(e.RowHandle))
             {
-                // Thêm mới trực tiếp vào form
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
+                string code_room_status = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
+                string name_status = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
 
-                RoomStatusBLL.Instance.InsertRoomType(col_1, col_2);
+                RoomStatusBLL.Instance.InsertRoomType(code_room_status, name_status);
             }
             else
             {
-                // Sửa trực tiếp trên form
-                string col_1 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
-                string col_2 = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
+                string code_room_status = "" + view.GetRowCellValue(e.RowHandle, view.Columns[0]).ToString() + "";
+                string name_status = "" + view.GetRowCellValue(e.RowHandle, view.Columns[1]).ToString() + "";
 
 
-                RoomStatusBLL.Instance.EditRoomType(col_1, col_2);
+                RoomStatusBLL.Instance.EditRoomType(code_room_status, name_status);
             }
         }
     }

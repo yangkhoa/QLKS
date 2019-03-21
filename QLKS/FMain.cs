@@ -92,7 +92,7 @@ namespace QLKS
             LoadRoom();
         }
 
-        private void BarButton_Employee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButton_Account_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FAccount f = new FAccount(LoginAccount);
             f.ShowDialog();
@@ -155,6 +155,12 @@ namespace QLKS
         private void BarButton_Team_ItemClick(object sender, ItemClickEventArgs e)
         {
             FTeam f = new FTeam();
+            f.ShowDialog();
+        }
+
+        private void BarButton_Employee_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FEmployee f = new FEmployee();
             f.ShowDialog();
         }
     }
