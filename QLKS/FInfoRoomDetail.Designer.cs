@@ -123,6 +123,7 @@
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.Btn_Add_Cus = new DevExpress.XtraBars.BarButtonItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -468,8 +469,9 @@
             this.barStatic_id_bill,
             this.btn_DeleteServiceUsing,
             this.btn_Approve,
-            this.barEdit_Room});
-            this.barManager1.MaxItemId = 8;
+            this.barEdit_Room,
+            this.Btn_Add_Cus});
+            this.barManager1.MaxItemId = 9;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchControl1,
             this.repositoryItemSearchLookUp_Room,
@@ -488,6 +490,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barStatic_id_bill),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_Payment, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_SwapRoom, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle))), this.Btn_Add_Cus, "Thêm khách hàng", false, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_DeleteServiceUsing, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_Approve, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEdit_Room, "", false, true, true, 72)});
@@ -1124,6 +1127,15 @@
             this.emptySpaceItem5.Size = new System.Drawing.Size(585, 19);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // Btn_Add_Cus
+            // 
+            this.Btn_Add_Cus.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.Btn_Add_Cus.Caption = "Thêm khách hàng";
+            this.Btn_Add_Cus.Id = 8;
+            this.Btn_Add_Cus.ImageOptions.Image = global::QLKS.Properties.Resources.usergroup_16x16;
+            this.Btn_Add_Cus.Name = "Btn_Add_Cus";
+            this.Btn_Add_Cus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_Add_Cus_ItemClick);
+            // 
             // FInfoRoomDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -1308,5 +1320,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox_Room;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraBars.BarButtonItem Btn_Add_Cus;
     }
 }

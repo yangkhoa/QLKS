@@ -104,6 +104,7 @@
             this.BarButton_ReportRevenue.ImageOptions.Image = global::QLKS.Properties.Resources.report_16x16;
             this.BarButton_ReportRevenue.ImageOptions.LargeImage = global::QLKS.Properties.Resources.report_32x32;
             this.BarButton_ReportRevenue.Name = "BarButton_ReportRevenue";
+            this.BarButton_ReportRevenue.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButton_ReportRevenue_ItemClick);
             // 
             // ribbonPage3
             // 
@@ -225,6 +226,7 @@
             this.Btn_Bill.ImageOptions.Image = global::QLKS.Properties.Resources.bosale_16x16;
             this.Btn_Bill.ImageOptions.LargeImage = global::QLKS.Properties.Resources.bosale_32x32;
             this.Btn_Bill.Name = "Btn_Bill";
+            this.Btn_Bill.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_Bill_ItemClick);
             // 
             // ribbonPageGroup8
             // 

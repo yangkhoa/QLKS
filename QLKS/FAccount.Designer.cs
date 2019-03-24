@@ -67,7 +67,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(959, 462);
+            this.panelControl1.Size = new System.Drawing.Size(959, 461);
             this.panelControl1.TabIndex = 5;
             // 
             // gridControl_Employee
@@ -78,7 +78,7 @@
             this.gridControl_Employee.Name = "gridControl_Employee";
             this.gridControl_Employee.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchChucVu});
-            this.gridControl_Employee.Size = new System.Drawing.Size(959, 462);
+            this.gridControl_Employee.Size = new System.Drawing.Size(959, 461);
             this.gridControl_Employee.TabIndex = 0;
             this.gridControl_Employee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -165,7 +165,7 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Mã chức vụ";
-            this.gridColumn5.FieldName = "code_employee_position";
+            this.gridColumn5.FieldName = "code_account_position";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 0;
@@ -244,9 +244,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 462);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 461);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(959, 34);
+            this.barDockControlBottom.Size = new System.Drawing.Size(959, 35);
             // 
             // barDockControlLeft
             // 
@@ -254,7 +254,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 462);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 461);
             // 
             // barDockControlRight
             // 
@@ -262,7 +262,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(959, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 462);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 461);
             // 
             // FAccount
             // 

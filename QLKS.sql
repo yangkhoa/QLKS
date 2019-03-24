@@ -119,7 +119,7 @@ CREATE TABLE Bill
 	
 )
 GO
-
+ALTER TABLE Bill ADD total FLOAT
 -- BillDetail
 CREATE TABLE BillDetail
 (
@@ -149,7 +149,6 @@ CREATE TABLE BookingInfo
 	FOREIGN KEY (username) REFERENCES dbo.Account(username)
 )
 GO
-
 
 -- Thêm thông tin chức vụ nhân viên
 INSERT AccountPosition(code_account_position,name_position)
@@ -258,6 +257,7 @@ GO
 EXEC USP_GetRoomList
 
 -- Store Procedure Cập nhật Account
+
 CREATE PROC USP_UpdateAccount
 @username NVARCHAR(100), @displayname NVARCHAR(100), @password NVARCHAR(100), @newpassword NVARCHAR(100)
 AS 
@@ -287,15 +287,26 @@ BEGIN
 END
 GO
 
+-- Store Procedure để thêm phiếu đặt phòng
+CREATE PROC USP_InsertBooking
+@username NVARCHAR(50), @code_room NVARCHAR(100), @code_customer NVARCHAR(100), @date_checkin DATETIME, @deposit FLOAT
+AS
+BEGIN
+	INSERT BookingInfo(username,code_room,code_customer,date_book,date_checkin,deposit)
+	VALUES (@username, @code_room, @code_customer,GETDATE(),@date_checkin,@deposit)
+
+	UPDATE Room SET code_status = N'003' WHERE code_room = @code_room
+END
+GO
 
 -- Store Procedure để thanh toán
 CREATE PROC USP_PayBill
-@id_bill INT, @code_room NVARCHAR(100), @deposit FLOAT, @discount FLOAT
+@id_bill INT, @code_room NVARCHAR(100), @deposit FLOAT, @discount FLOAT, @total FLOAT
 AS
 BEGIN
 	UPDATE Room SET code_status = N'001' WHERE code_room = @code_room
 
-	UPDATE Bill SET status_bill = 1 , deposit = @deposit , discount = @discount WHERE id_bill = @id_bill
+	UPDATE Bill SET status_bill = 1 , deposit = @deposit , discount = @discount , total = @total  WHERE id_bill = @id_bill
 END
 
 -- Store Procedure để chuyển phòng
@@ -312,28 +323,31 @@ BEGIN
 END
 
 
+
+-- Store Procedure để Lấy danh sách Bill
+CREATE PROC USP_GetListBill
+@date_checkin DateTime , @date_checkout DATETIME
+AS
+BEGIN
+	SELECT B.id_bill, R.name_room, B.date_checkin, B.date_checkout, B.deposit, B.discount, B.total
+	FROM Bill B, Room R
+	WHERE status_bill = 1 AND B.code_room = R.code_room AND B.date_checkin >= @date_checkin AND B.date_checkout <= @date_checkout
+END
+
+-- Store Procedure để chuyển phiếu đặt phòng sang hóa đơn
+CREATE PROC USP_ChangeBookingToBill
+@username NVARCHAR(50), @code_room NVARCHAR(100), @code_customer NVARCHAR(100), @deposit FLOAT, @id_booking INT
+AS
+BEGIN
+	INSERT Bill(username,code_room,code_customer,date_checkin,date_checkout,deposit,discount,status_bill,date_created)
+	VALUES (@username, @code_room, @code_customer,GETDATE(),NULL,@deposit,0,0,GETDATE())
+
+	UPDATE Room SET code_status = N'002' WHERE code_room = @code_room
+	DELETE BookingInfo WHERE id_booking = @id_booking
+END
+GO
+
 ----------------------------------------------------------------
 
 
 
-
-
-SELECT * FROM BillDetail
-
-SELECT * FROM RoomStatus
-
-SELECT date_checkin, date_checkout,DATEDIFF(dd, date_checkin, date_checkout) as count_day FROM Bill WHERE id_bill = 2
-	
-SELECT * FROM Room
-
-SELECT code_room
-FROM Room
-WHERE code_room != N'101' AND code_status = N'001'
-
-SELECT * FROM Employee
-
-INSERT Employee(code_employee,name_employee,date_birth,phone)
-VALUES (N'E004',N'Phạm Huỳnh Đức',N'01/02/1998',N'0789465123')
-
-UPDATE Employee SET name_employee=N'' , date_birth = N'' , phone = N'' WHERE code_employee = N''
-DELETE Employee WHERE code_employee = N'E004'

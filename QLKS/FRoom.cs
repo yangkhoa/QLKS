@@ -65,13 +65,19 @@ namespace QLKS
         {
             if (!gridView1.IsNewItemRow(gridView1.FocusedRowHandle))
             {
-                string col_1 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString().Trim() + "";
-                string col_2 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
-                string col_3 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim() + "";
-                string col_4 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString().Trim() + "";
-                string col_5 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
-
-                RoomBLL.Instance.EditRoom(col_1, col_2,col_3,col_4,col_5);
+                string code_room = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString().Trim() + "";
+                string name_room = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string code_type = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim() + "";
+                string code_status = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString().Trim() + "";
+                string note = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
+                try
+                {
+                    RoomBLL.Instance.EditRoom(code_room, name_room, code_type, code_status, note);
+                }
+                catch
+                {
+                    LoadListRoom();
+                }
             }
 
 
@@ -105,15 +111,15 @@ namespace QLKS
             if (view.IsNewItemRow(e.RowHandle))
             {
                 // Thêm mới trực tiếp vào form
-                string col_1 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString().Trim() + "";
-                string col_2 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
-                string col_3 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim() + "";
-                string col_4 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString().Trim() + "";
-                string col_5 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
+                string code_room = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString().Trim() + "";
+                string name_room = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string code_type = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim() + "";
+                string code_status = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString().Trim() + "";
+                string note = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
 
                 try
                 {
-                    RoomBLL.Instance.InsertRoom(col_1, col_2, col_3, col_4, col_5);
+                    RoomBLL.Instance.InsertRoom(code_room, name_room, code_type, code_status, note);
                 }
                 catch
                 {
@@ -124,15 +130,15 @@ namespace QLKS
             else
             {
                 // Sửa trực tiếp trên form
-                string col_1 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString().Trim() + "";
-                string col_2 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
-                string col_3 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim() + "";
-                string col_4 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString().Trim() + "";
-                string col_5 = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
+                string code_room = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString().Trim() + "";
+                string name_room = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString() + "";
+                string code_type = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString().Trim() + "";
+                string code_status = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString().Trim() + "";
+                string note = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString() + "";
 
                 try
                 {
-                    RoomBLL.Instance.EditRoom(col_1, col_2, col_3, col_4, col_5);
+                    RoomBLL.Instance.EditRoom(code_room, name_room, code_type, code_status, note);
                 }
                 catch
                 {

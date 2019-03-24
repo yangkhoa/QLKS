@@ -36,6 +36,7 @@ namespace QLKS
             InitializeComponent();
 
             int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
+            int id_booking = BookingDAL.Instance.GetBookingIdByCodeRoom(Code_room);
 
             if (id_bill != -1)
             {
@@ -45,6 +46,14 @@ namespace QLKS
 
                 LoadServiceUsing(id_bill);
             }
+
+            if (id_booking !=-1)
+            {
+                LoadInfoBooking(id_booking);
+
+                LoadInfoCustomer_Booking(id_booking);
+            }
+
             LoadCBKH();
 
             LoadInfoService();
@@ -64,11 +73,30 @@ namespace QLKS
             txt_discount.Text = (bill.Discount * 100).ToString();
         }
 
+        private void LoadInfoBooking(int id_booking)
+        {
+            Booking booking = BookingDAL.Instance.GetInfoBookingByIdBooking(id_booking);
+            date_customer_checkin.Text = booking.Date_checkin.ToString();
+
+            txt_deposit.Text = booking.Deposit.ToString();
+        }
+
         private void LoadInfoCustomer(int id_bill)
         {
             barStatic_id_bill.Caption = id_bill.ToString();
 
             Customer customer = BillDAL.Instance.GetCustomerByIdBill(id_bill);
+
+            search_customer.Text = customer.Code_customer;
+            txt_name_customer.Text = customer.Name_customer;
+            txt_phone_customer.Text = customer.Phone_customer;
+            txt_cmnd_customer.Text = customer.Cmnd_customer;
+            txt_email_customer.Text = customer.Email_customer;
+        }
+
+        private void LoadInfoCustomer_Booking(int id_booking)
+        {
+            Customer customer = BookingDAL.Instance.GetCustomerByIdBooking(id_booking);
 
             search_customer.Text = customer.Code_customer;
             txt_name_customer.Text = customer.Name_customer;
@@ -174,7 +202,10 @@ namespace QLKS
 
         private void Btn_Approve_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room) == -1 && txt_name_customer.Text != "")
+            int id_bill = BillDAL.Instance.GetUnCheckBillByCodeRoom(Code_room);
+            int id_booking = BookingDAL.Instance.GetBookingIdByCodeRoom(Code_room);
+
+            if (id_bill == -1 && search_customer.Text != "" && id_booking == -1)
             {
                 if (MessageBox.Show("Bạn có muốn tạo hóa đơn mới?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
@@ -183,6 +214,31 @@ namespace QLKS
                         BillBLL.Instance.InsertBill(LoginAccount.Username, txt_name_room.Text, search_customer.Text);
                     }
                     catch (Exception) { }
+                }
+            }
+
+            if (id_booking != -1)
+            {
+                DialogResult result = MessageBox.Show("Bạn có muốn tạo hóa đơn cho phiếu đặt phòng này?", "Thông báo", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        BookingBLL.Instance.ChangeToBill(LoginAccount.Username, Code_room, search_customer.Text, Convert.ToDouble(txt_deposit.EditValue), id_booking);
+                    }
+                    catch (Exception) { }
+                }
+                else if (result == DialogResult.No)
+                {
+                    try
+                    {
+                        BookingBLL.Instance.DeleteBooking(id_booking);
+                    }
+                    catch (Exception) { }
+                }
+                else
+                {
+                    this.Close();
                 }
             }
 
@@ -333,6 +389,14 @@ namespace QLKS
             repositoryItemSearchLookUp_Room.ValueMember = "code_room";
 
             repositoryItemSearchLookUp_Room.DisplayMember = "code_room";
+        }
+
+        private void Btn_Add_Cus_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FCustomer f = new FCustomer();
+            f.ShowDialog();
+
+            LoadCBKH();
         }
     }
 }

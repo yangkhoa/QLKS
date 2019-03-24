@@ -61,5 +61,10 @@ namespace DAL
             }
             return null;
         }
+
+        public DataTable GetListBillByDate(DateTime checkin, DateTime checkout)
+        {
+            return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListBill @date_checkin , @date_checkout ", new object[] { checkin , checkout });
+        }
     }
 }

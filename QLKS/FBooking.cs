@@ -18,8 +18,14 @@ namespace QLKS
 {
     public partial class FBooking : DevExpress.XtraEditors.XtraForm
     {
-        public FBooking()
+        private Account _loginAccount;
+
+        public Account LoginAccount { get => _loginAccount; set => _loginAccount = value; }
+
+        public FBooking(Account acc)
         {
+            this.LoginAccount = acc;
+
             InitializeComponent();
 
             LoadListRoom();
@@ -41,11 +47,6 @@ namespace QLKS
         private void LoadListRoom()
         {
             gridControl_Room.DataSource = RoomDAL.Instance.GetRoomListBooking();
-        }
-
-        private void Txt_deposit_Leave(object sender, EventArgs e)
-        {
-            txt_deposit.Text = String.Format("{0:0,0}", double.Parse(txt_deposit.Text)); 
         }
 
         private void Btn_Exit_Click(object sender, EventArgs e)
@@ -75,8 +76,18 @@ namespace QLKS
 
         private void Btn_Approve_Click(object sender, EventArgs e)
         {
-            
-            
+            if (MessageBox.Show("Bạn có muốn tạo phiếu đặt phòng?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    string code_room = "" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString().Trim() + "";
+
+                    BookingBLL.Instance.InsertBooking(LoginAccount.Username, code_room, search_lookup_customer.Text, Convert.ToDateTime(dateEdit_checkin.EditValue), Convert.ToDouble(txt_deposit.EditValue));
+
+                    this.Close();
+                }
+                catch (Exception) { }          
+            }
         }
     }
 }

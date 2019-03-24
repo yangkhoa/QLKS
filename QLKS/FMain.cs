@@ -148,8 +148,9 @@ namespace QLKS
 
         private void BarButton_Booking_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FBooking f = new FBooking();
+            FBooking f = new FBooking(LoginAccount);
             f.ShowDialog();
+            LoadRoom();
         }
 
         private void BarButton_Team_ItemClick(object sender, ItemClickEventArgs e)
@@ -161,6 +162,18 @@ namespace QLKS
         private void BarButton_Employee_ItemClick(object sender, ItemClickEventArgs e)
         {
             FEmployee f = new FEmployee();
+            f.ShowDialog();
+        }
+
+        private void Btn_Bill_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FListBill f = new FListBill();
+            f.ShowDialog();
+        }
+
+        private void BarButton_ReportRevenue_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FReport f = new FReport();
             f.ShowDialog();
         }
     }

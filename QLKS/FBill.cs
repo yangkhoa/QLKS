@@ -21,6 +21,7 @@ namespace QLKS
         private double _deposit;
         private double _discount;
         private string _code_room;
+        private double _total_full;
 
         public int Id_bill { get => _id_bill; set => _id_bill = value; }
         public double Total_service_using { get => _total_service_using; set => _total_service_using = value; }
@@ -28,6 +29,7 @@ namespace QLKS
         public double Deposit { get => _deposit; set => _deposit = value; }
         public double Discount { get => _discount; set => _discount = value; }
         public string Code_room { get => _code_room; set => _code_room = value; }
+        public double Total_full { get => _total_full; set => _total_full = value; }
 
         public FBill(int id_bill, string txt_sum_service_using, string txt_price_room,string txt_deposit,string txt_discount, string code_room)
         {
@@ -61,14 +63,15 @@ namespace QLKS
             txt_total_service.Text = String.Format("{0:0,0} VNĐ", Total_service_using);
             txt_deposit.Text = String.Format("{0:0,0} VNĐ", Deposit);
             txt_discount.Text = Discount.ToString();
-            txt_total_final.Text = String.Format("{0:0,0}", ( (total * (1 - (Discount*0.01))) + Total_service_using - Deposit) );
+            Total_full = ((total * (1 - (Discount * 0.01))) + Total_service_using - Deposit);
+            txt_total_final.Text = String.Format("{0:0,0}", Total_full);
         }
 
         private void Btn_Approve_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có muốn thanh toán cho phòng " + Code_room, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                BillBLL.Instance.Checkout(Id_bill, Code_room, Deposit, Discount);
+                BillBLL.Instance.Checkout(Id_bill, Code_room, Deposit, Discount,Total_full);
 
                 this.Close();
             }

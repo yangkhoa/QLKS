@@ -241,7 +241,7 @@
             this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn6.Caption = "Phòng";
-            this.gridColumn6.FieldName = "name_room";
+            this.gridColumn6.FieldName = "code_room";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 0;
@@ -352,7 +352,6 @@
             this.txt_deposit.Size = new System.Drawing.Size(474, 28);
             this.txt_deposit.StyleController = this.layoutControl1;
             this.txt_deposit.TabIndex = 9;
-            this.txt_deposit.Leave += new System.EventHandler(this.Txt_deposit_Leave);
             // 
             // search_lookup_customer
             // 
